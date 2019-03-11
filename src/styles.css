@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+.center_full{margin: auto;text-align: center;}
+.margin-center{margin: auto;}
+.mat-drawer-container{height:100%;}
+.headers-align .mat-expansion-panel-header-title,
+.headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+.flex-line{display: flex;flex-wrap: wrap;}
+.sparse{justify-content:space-between;}
+.element{flex-grow: 1}
+.headers-align .mat-expansion-panel-header-description {
+  align-items: center;
+  justify-content: space-between;
+}
+.fill-remaining-space{ flex: 1 1 auto;}
+.width-50{width: 50%;}
+.element-x-2{flex-grow: 2}
+.element_3-4{width: 75%;}
+.element_1-3{width: 33%;}
+.margin-v-15{margin: 0 15px;}
+.keep-lines{white-space:pre-wrap;}
+.page-root{display: flex;flex-flow: column;height: 100%;}
+.bg-white{ background: white;}
+.h100{height: 100%;}

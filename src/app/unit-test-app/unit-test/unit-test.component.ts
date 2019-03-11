@@ -1,4 +1,4 @@
-import { ApiParserService } from './../../services/api-parser.service';
+import { UnitTestWriterService } from './../../services/unit-test-writer.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,16 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./unit-test.component.css']
 })
 export class UnitTestComponent implements OnInit {
-
-  constructor(private abiParserService: ApiParserService) { }
+  result: string;
+  events: string;
+  constructor(private unitTestWriterService: UnitTestWriterService) { }
 
   ngOnInit() {
   }
 
   test(): void {
-    console.log('in');
-    const a = this.abiParserService.parseABIForElements();
-    console.log(a);
+    const a = UnitTestWriterService.writeTest();
+    this.unitTestWriterService.test();
+    this.result = a;
 
   }
 
