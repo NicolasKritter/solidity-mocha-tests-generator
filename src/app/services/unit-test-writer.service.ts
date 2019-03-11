@@ -102,7 +102,9 @@ export class UnitTestWriterService {
   }
 
   static writeEventInputs(inputs: ContractInsOuts[]){
-
+  //   truffleAssert.eventEmitted(tu, 'LoginUser', (ev) => {
+  //     return ev.userId == 0 & ev.role == roleOK;
+  // });
   }
   static writeEventsTest(eventList: ContractElement[]): string {
       let s = '';

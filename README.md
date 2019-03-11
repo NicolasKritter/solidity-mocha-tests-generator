@@ -1,4 +1,27 @@
-# SolidityMochasTestsGenerator
+# Solidity Mocha Tests Generator for truffle test
+
+Automagically generate mocha test from your soliddity class compiled by truffle.
+
+WORK IN PROGRESS
+
+- [ ] add design
+- [ ] interface to import json
+- [ ] interface to copy result to clipboard
+- [ ] implement parse of event
+- [ ] write a real readme
+- [ ] generate gaz consumption test
+- [ ] Add licence file
+- [ ] Refactoring
+- [ ] Add live version on github
+
+
+# How to Use this App
+- Put the json comiled by truffle containing the abi in the data folder and rename it 'contract.json'
+- Run the app with ng serve and naviguate to '/unit-test
+
+Nicolas KRITTER
+
+License MIT
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
 
