@@ -47,7 +47,7 @@ export class UnitTestWriterService {
     outputs.forEach( e => {
       out = ApiParserService.parseOut(e);
       res +=
-       `assert.equal(result['${i}']${out.transfo}, ${out.val}, "should be ${out.val} and type ${out.realType}")
+       `assert.equal(result['${i}']${out.transfo}, ${out.val}, "should be ${out.val} and type ${out.realType}");
        `;
       i ++;
     });
@@ -59,7 +59,7 @@ export class UnitTestWriterService {
     let input: ParsedOut;
     inputs.forEach(e => {
       input = ApiParserService.parseIn(e);
-      helper += `${input.transfo}: ${input.realType}, `;
+      helper += ` ${input.transfo}: ${input.realType},`;
       s += `${input.val} ,`;
     });
     if (s.length) {
@@ -83,7 +83,7 @@ export class UnitTestWriterService {
     const output = UnitTestWriterService.writeOutputs(func.outputs);
     const res =
     `
-    it('${func.name}', async ()=>{
+    it('${func.name}', async ()=>{ //TODO TOCHECK
      const result = await access.${func.name}(${input[0]}); // (${input[1]})
      ${output}
     });
