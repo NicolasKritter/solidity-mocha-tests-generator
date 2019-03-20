@@ -9,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class UnitTestComponent implements OnInit {
   result: string;
   events: string;
+  abiInput: string;
+  urlContractJson: string;
   constructor(private unitTestWriterService: UnitTestWriterService) { }
 
   ngOnInit() {

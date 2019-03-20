@@ -1,15 +1,42 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<mat-toolbar color="primary" role="header">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon arial-label="menu">menu</mat-icon>
+  </button>
   <h1>
-    Welcome to {{ title }}!
+    Solidity MochaJs Test Generator
   </h1>
-</div>
 
-<ul>
-  <li>
-    <h2> <a mat-list-item [routerLink]="'/unit-test'">Unit Test</a></h2>
-  </li>
+</mat-toolbar>
 
-</ul>
+<mat-sidenav-container>
 
-<router-outlet></router-outlet>
+  <mat-sidenav #sidenav mode="side" opened cdkscrollable >
+      <mat-nav-list>
+          <a mat-list-item [routerLink]="'/unit-test'">Unit Test</a>
+
+      </mat-nav-list>
+
+    <!-- <mat-accordion>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          Test
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+        </mat-nav-list>
+      </mat-expansion-panel>
+
+
+    </mat-accordion> -->
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- <div class="toggle-sidenav">
+
+    </div> -->
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

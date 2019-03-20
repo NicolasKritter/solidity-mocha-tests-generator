@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/purple-green.css";
+.dark-primary-color    { background: #303F9F; }
+.default-primary-color { background: #3F51B5; }
+.light-primary-color   { background: #C5CAE9; }
+.text-primary-color    { color: #FFFFFF; }
+.accent-color          { background: #009688; }
+.primary-text-color    { color: #212121; }
+.secondary-text-color  { color: #757575; }
+.divider-color         { border-color: #BDBDBD; }
+html, body { height: 100%; margin: 0; width:100%;}
+body { font-family: Roboto, "Helvetica Neue", sans-serif;}
+.mat-sidenav{min-width: 260px;width:200px;}
 .center_full{margin: auto;text-align: center;}
 .margin-center{margin: auto;}
 .mat-drawer-container{height:100%;}
@@ -18,8 +30,13 @@
 .element-x-2{flex-grow: 2}
 .element_3-4{width: 75%;}
 .element_1-3{width: 33%;}
-.margin-v-15{margin: 0 15px;}
+.margin-h-15{margin: 0 15px;}
+.flex-block{display: flex;}
+.flex-block_column{
+  flex-direction: column;
+}
 .keep-lines{white-space:pre-wrap;}
 .page-root{display: flex;flex-flow: column;height: 100%;}
 .bg-white{ background: white;}
 .h100{height: 100%;}
+/* .mat-sidenav-content{background: lightgrey;} */
