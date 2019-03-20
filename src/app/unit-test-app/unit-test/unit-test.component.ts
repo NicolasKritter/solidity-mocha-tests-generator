@@ -1,5 +1,5 @@
 import { UnitTestWriterService } from './../../services/unit-test-writer.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-unit-test',
@@ -7,20 +7,53 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./unit-test.component.css']
 })
 export class UnitTestComponent implements OnInit {
+  @ViewChild('fileInput')
+  fileInput: ElementRef;
   result: string;
   events: string;
   abiInput: string;
   urlContractJson: string;
+  file: File;
+  fileName: string;
   constructor(private unitTestWriterService: UnitTestWriterService) { }
 
   ngOnInit() {
   }
 
-  test(): void {
-    const a = UnitTestWriterService.writeTest();
+  writeTest(): void {
+    if (!this.abiInput) {return; }
+    const parsedContract = JSON.parse(this.abiInput);
     this.unitTestWriterService.test();
-    this.result = a;
-
+    this.result = UnitTestWriterService.writeTest(parsedContract);
+  }
+  selectFile(): void {
+    this.fileInput.nativeElement.click();
   }
 
+  onFileChanged(e: any): void {
+    this.file = e.target.files[0];
+    this.fileName = this.file.name;
+
+  }
+  parseFileToContractJson() {
+    // const parsed = JSON.parse(this.file);
+    if (!this.file) { return; }
+    const fileReader = new FileReader();
+    fileReader.onload = (e) => {
+      this.abiInput = fileReader.result.toString();
+    };
+    fileReader.readAsText(this.file);
+}
+
+copyResultToClipBoard(): void {
+  this.copyToClipboard(this.result);
+}
+private copyToClipboard(item: any): void {
+  document.addEventListener('copy', (e: ClipboardEvent) => {
+    e.clipboardData.setData('text/plain', (item));
+    e.preventDefault();
+    document.removeEventListener('copy', null);
+  });
+  document.execCommand('copy');
+}
 }

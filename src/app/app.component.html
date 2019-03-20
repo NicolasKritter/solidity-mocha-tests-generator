@@ -1,3 +1,5 @@
+<div class="page-root">
+
 <mat-toolbar color="primary" role="header">
   <button mat-icon-button (click)="sidenav.toggle()">
     <mat-icon arial-label="menu">menu</mat-icon>
@@ -8,7 +10,7 @@
 
 </mat-toolbar>
 
-<mat-sidenav-container>
+<mat-sidenav-container >
 
   <mat-sidenav #sidenav mode="side" opened cdkscrollable >
       <mat-nav-list>
@@ -31,12 +33,10 @@
 
   </mat-sidenav>
 
-  <mat-sidenav-content>
-    <!-- <div class="toggle-sidenav">
-
-    </div> -->
-
+  <mat-sidenav-content class="page-root">
+    <!-- <div class="toggle-sidenav"> </div> -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 
 </mat-sidenav-container>
+</div>

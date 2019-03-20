@@ -101,7 +101,7 @@ export class UnitTestWriterService {
     return s;
   }
 
-  static writeEventInputs(inputs: ContractInsOuts[]){
+  static writeEventInputs(inputs: ContractInsOuts[]) {
   //   truffleAssert.eventEmitted(tu, 'LoginUser', (ev) => {
   //     return ev.userId == 0 & ev.role == roleOK;
   // });
@@ -114,7 +114,8 @@ export class UnitTestWriterService {
       return s;
   }
 
-  static writeTest(): string {
+  static writeTest(contract: any): string {
+    ApiParserService.setContract(contract);
     const sortedElements = ApiParserService.parseABIForElements();
     const contractName = ApiParserService.getContractName();
     let s = this.initFile();
