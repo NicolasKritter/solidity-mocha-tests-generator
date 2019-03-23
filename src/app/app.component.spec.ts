@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'solidity-mochas-tests-generator'`, () => {
+  it(`should have as title 'solidity-mocha-tests-generator'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('solidity-mochas-tests-generator');
+    expect(app.title).toEqual('solidity-mocha-tests-generator');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to solidity-mochas-tests-generator!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to solidity-mocha-tests-generator!');
   });
 });

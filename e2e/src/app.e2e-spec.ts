@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to solidity-mochas-tests-generator!');
+    expect(page.getTitleText()).toEqual('Welcome to solidity-mocha-tests-generator!');
   });
 
   afterEach(async () => {
