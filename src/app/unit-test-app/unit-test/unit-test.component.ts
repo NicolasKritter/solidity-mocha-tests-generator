@@ -23,8 +23,10 @@ export class UnitTestComponent implements OnInit {
   writeTest(): void {
     if (!this.abiInput) {return; }
     const parsedContract = JSON.parse(this.abiInput);
-    this.unitTestWriterService.test();
-    this.result = UnitTestWriterService.writeTest(parsedContract);
+    this.unitTestWriterService.test(parsedContract);
+    const txtJs = UnitTestWriterService.writeTest(parsedContract);
+    this.result = txtJs[0];
+    this.events = txtJs[1];
   }
   selectFile(): void {
     this.fileInput.nativeElement.click();
@@ -47,6 +49,9 @@ export class UnitTestComponent implements OnInit {
 
 copyResultToClipBoard(): void {
   this.copyToClipboard(this.result);
+}
+copyEventToClipBoard(): void {
+  this.copyToClipboard(this.events);
 }
 private copyToClipboard(item: any): void {
   document.addEventListener('copy', (e: ClipboardEvent) => {

@@ -12,7 +12,6 @@ const TYPE_EVENT = 'event';
   providedIn: 'root'
 })
 export class ApiParserService {
-  static contract: any;
   constructor() {}
 
   static parseOut(output: ContractInsOuts): ParsedOut {
@@ -73,15 +72,13 @@ export class ApiParserService {
     return { fList, eList };
   }
 
-  static getContractName(): string {
-    if (!this.contract) { return; }
-    return this.contract.contractName;
+  static getContractName(contract: any): string {
+    if (!contract) { return; }
+    return contract.contractName;
   }
-  static parseABIForElements(): any {
-    if (!this.contract) { return {}; }
-    return ApiParserService.exctractElementByTypes(this.contract.abi);
+  static parseABIForElements(contract: any): any {
+    if (!contract) { return {}; }
+    return ApiParserService.exctractElementByTypes(contract.abi);
   }
-  static setContract(contractJSON: any): void {
-    this.contract = contractJSON;
-  }
+
 }

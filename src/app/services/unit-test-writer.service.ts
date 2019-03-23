@@ -8,8 +8,7 @@ import { ParsedOut } from '../model/parsed-out';
   providedIn: 'root'
 })
 export class UnitTestWriterService {
-
-  constructor() { }
+  constructor() {}
 
   static initFile(): string {
     return `
@@ -21,7 +20,7 @@ export class UnitTestWriterService {
   }
 
   static addContract(name: string): string {
-   return `
+    return `
     contract("${name}", (accounts) => {
 
       let access;
@@ -38,18 +37,19 @@ export class UnitTestWriterService {
   static closeFile(): string {
     return '});';
   }
-  static  writeOutputs(outputs: ContractInsOuts[]): string {
-    if (outputs.length < 1) {return '//TODO Attach Event or getter'; }
+  static writeOutputs(outputs: ContractInsOuts[]): string {
+    if (outputs.length < 1) {
+      return '//TODO Attach Event or getter';
+    }
     let res = '';
     let out: ParsedOut;
 
     let i = 0;
-    outputs.forEach( e => {
+    outputs.forEach(e => {
       out = ApiParserService.parseOut(e);
-      res +=
-       `assert.equal(result['${i}']${out.transfo}, ${out.val}, "should be ${out.val} and type ${out.realType}");
+      res += `assert.equal(result['${i}']${out.transfo}, ${out.val}, "should be ${out.val} and type ${out.realType}");
        `;
-      i ++;
+      i++;
     });
     return res;
   }
@@ -71,18 +71,17 @@ export class UnitTestWriterService {
     return [s, helper];
   }
   static writeFunctionsTest(functionList: ContractElement[]): string {
-      let s = ' ';
-      functionList.forEach(element => {
-        s += UnitTestWriterService.writeTestForFunction(element);
-      });
-      return s;
+    let s = ' ';
+    functionList.forEach(element => {
+      s += UnitTestWriterService.writeTestForFunction(element);
+    });
+    return s;
   }
 
   static writeTestForFunction(func: ContractElement) {
     const input = UnitTestWriterService.writeInputs(func.inputs);
     const output = UnitTestWriterService.writeOutputs(func.outputs);
-    const res =
-    `
+    const res = `
     it('${func.name}', async ()=>{ //TODO TOCHECK
      const result = await access.${func.name}(${input[0]}); // (${input[1]})
      ${output}
@@ -90,43 +89,59 @@ export class UnitTestWriterService {
     `;
     return res;
   }
+  static writeOutputsEvent(outputs: ContractInsOuts[]): string[] {
+    let s = '';
+    let helper = '';
+    let output: ParsedOut;
+    outputs.forEach(element => {
+      output = ApiParserService.parseIn(element);
+      s += ` ev.${element.name} == ${output.val} &`;
+      helper += ` ${output.transfo}: ${output.realType},`;
+    });
+    if (s.length) {
+      s = s.slice(0, s.length - 1);
+      s = 'return ' + s + ';';
+    }
+    if (helper.length) {
+      helper = helper.slice(0, helper.length - 1);
+    }
+    return [s, helper];
+  }
 
-  static writeEvent(event: ContractElement, s: string) {
-    s = s || '';
-    const input = UnitTestWriterService.writeEventInputs(event.inputs);
-    s +=
-    `
+  static writeEvent(event: ContractElement): string {
+    console.log(event);
 
-    `;
+    const outputParsed = UnitTestWriterService.writeOutputsEvent(event.inputs);
+    const s = `
+            truffleAssert.eventEmitted(callThatTriggersTheEvent, '${event.name}', (ev) => {
+              ${outputParsed[0]} // {${outputParsed[1]}}
+              });
+          `;
     return s;
   }
 
-  static writeEventInputs(inputs: ContractInsOuts[]) {
-  //   truffleAssert.eventEmitted(tu, 'LoginUser', (ev) => {
-  //     return ev.userId == 0 & ev.role == roleOK;
-  // });
-  }
   static writeEventsTest(eventList: ContractElement[]): string {
-      let s = '';
-      eventList.forEach(element => {
-        s += `it('${element.name}',()=>{${element.inputs}})` + '\n';
-      });
-      return s;
+    let s = '';
+    eventList.forEach(element => {
+      s += this.writeEvent(element);
+      // s += `it('${element.name}',()=>{${element.inputs}})` + '\n';
+    });
+    return s;
   }
 
-  static writeTest(contract: any): string {
-    ApiParserService.setContract(contract);
-    const sortedElements = ApiParserService.parseABIForElements();
-    const contractName = ApiParserService.getContractName();
+  static writeTest(contract: any): string [] {
+    const sortedElements = ApiParserService.parseABIForElements(contract);
+    const contractName = ApiParserService.getContractName(contract);
+    const eventList = UnitTestWriterService.writeEventsTest(sortedElements.eList);
     let s = this.initFile();
     s += this.addContract(contractName);
     s += this.writeFunctionsTest(sortedElements.fList);
     s += this.closeFile();
-    return s;
-  }
-  test(): any {
-    const sortedElements = ApiParserService.parseABIForElements();
-    console.log(sortedElements.eList);
+    return [s, eventList];
   }
 
+  test(contract: any): any {
+    // const sortedElements = ApiParserService.parseABIForElements(contract);
+    // console.log(UnitTestWriterService.writeEventsTest(sortedElements.eList));
+  }
 }
