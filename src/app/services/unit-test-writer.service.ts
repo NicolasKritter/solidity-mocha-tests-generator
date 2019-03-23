@@ -109,8 +109,6 @@ export class UnitTestWriterService {
   }
 
   static writeEvent(event: ContractElement): string {
-    console.log(event);
-
     const outputParsed = UnitTestWriterService.writeOutputsEvent(event.inputs);
     const s = `
             truffleAssert.eventEmitted(callThatTriggersTheEvent, '${event.name}', (ev) => {
