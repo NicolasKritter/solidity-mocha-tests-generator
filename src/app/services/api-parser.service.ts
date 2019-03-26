@@ -21,7 +21,7 @@ export class ApiParserService {
         res = new ParsedOut('.toNumber()', '42', output.type);
         break;
       case 'string':
-        res = new ParsedOut('', '"myString"', output.type);
+        res = new ParsedOut('', `'myString'`, output.type);
         break;
       case 'bool':
         res = new ParsedOut('', 'true', output.type);

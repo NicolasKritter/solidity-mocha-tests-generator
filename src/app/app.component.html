@@ -4,9 +4,8 @@
   <button mat-icon-button (click)="sidenav.toggle()">
     <mat-icon arial-label="menu">menu</mat-icon>
   </button>
-  <h1>
-    Solidity MochaJs Test Generator
-  </h1>
+
+    <a mat-button [routerLink]="''"> <h1 >Solidity MochaJs Test Generator </h1> </a>
 
 </mat-toolbar>
 
@@ -35,7 +34,8 @@
 
   <mat-sidenav-content class="page-root">
     <!-- <div class="toggle-sidenav"> </div> -->
-    <router-outlet></router-outlet>
+    <router-outlet>
+    </router-outlet>
   </mat-sidenav-content>
 
 </mat-sidenav-container>

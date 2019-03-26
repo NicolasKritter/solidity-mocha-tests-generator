@@ -15,10 +15,11 @@
             <mat-form-field class="element">
               <input readonly matInput type='text' [(ngModel)]="fileName" />
             </mat-form-field>
-            <button [disabled]="!file" mat-flat-button color="primary" (click)="parseFileToContractJson()">Parse
-              File</button>
+            <!-- <button [disabled]="!file" mat-flat-button color="primary" (click)="parseFileToContractJson()">Parse
+              File</button> -->
+              <button mat-flat-button color="accent" class="margin-h-15" (click)="selectFile()">Select File</button>
           </div>
-          <button mat-flat-button color="accent" class="margin-h-15" (click)="selectFile()">Select File</button>
+          <!-- <button mat-flat-button color="accent" class="margin-h-15" (click)="selectFile()">Select File</button> -->
 
         </div>
 
@@ -55,19 +56,24 @@
     </div>
   </mat-tab>
 
-  <mat-tab label="Result" *ngIf="result">
-    <div class="flex-line fill-remaining-space">
-    </div>
-    <div class="flex-line">
-      <div class="keep-lines element width-50">
+  <mat-tab label="Result - Functions" *ngIf="result">
+    <div class="flex-line margin-h-15 fill-remaining-space">
+      <div class=" element">
+        <mat-form-field class="element width-100">
+          <textarea rows="25" matInput class="keep-lines code-font" placeholder="Mocha test file">{{result}}</textarea>
+        </mat-form-field>
         <button mat-flat-button color="primary" (click)="copyResultToClipBoard()">Copy to ClipBoard</button>
-        <div class="element">{{result}}</div>
-      </div>
-      <div class="keep-lines element width-50">
-        <button mat-flat-button color="primary" (click)="copyEventToClipBoard()">Copy to ClipBoard</button>
-        <div class="element">{{events}}</div>
       </div>
     </div>
   </mat-tab>
-  <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
+  <mat-tab label="Result - Events" *ngIf="result">
+    <div class="flex-line margin-h-15 fill-remaining-space">
+      <div class="keep-lines element">
+        <mat-form-field class="element width-100">
+          <textarea rows="25" matInput class="keep-lines code-font" placeholder="Events test code">{{events}}</textarea>
+        </mat-form-field>
+        <button mat-flat-button color="primary" (click)="copyEventToClipBoard()">Copy to ClipBoard</button>
+      </div>
+    </div>
+  </mat-tab>
 </mat-tab-group>

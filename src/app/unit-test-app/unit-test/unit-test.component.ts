@@ -23,7 +23,7 @@ export class UnitTestComponent implements OnInit {
   writeTest(): void {
     if (!this.abiInput) {return; }
     const parsedContract = JSON.parse(this.abiInput);
-    this.unitTestWriterService.test(parsedContract);
+    // this.unitTestWriterService.test(parsedContract);
     const txtJs = UnitTestWriterService.writeTest(parsedContract);
     this.result = txtJs[0];
     this.events = txtJs[1];
@@ -35,6 +35,9 @@ export class UnitTestComponent implements OnInit {
   onFileChanged(e: any): void {
     this.file = e.target.files[0];
     this.fileName = this.file.name;
+    if (this.fileName.endsWith('.json')) {
+      this.parseFileToContractJson();
+    }
 
   }
   parseFileToContractJson() {

@@ -10,9 +10,9 @@ import { ParsedOut } from '../model/parsed-out';
 export class UnitTestWriterService {
   constructor() {}
 
-  static initFile(): string {
+  static initFile(name: string): string {
     return `
-    const Access = artifacts.require("Access");
+    const ${name} = artifacts.require("${name}");
     const assert = require("chai").assert;
     const truffleAssert = require('truffle-assertions');
 
@@ -131,7 +131,7 @@ export class UnitTestWriterService {
     const sortedElements = ApiParserService.parseABIForElements(contract);
     const contractName = ApiParserService.getContractName(contract);
     const eventList = UnitTestWriterService.writeEventsTest(sortedElements.eList);
-    let s = this.initFile();
+    let s = this.initFile(contractName);
     s += this.addContract(contractName);
     s += this.writeFunctionsTest(sortedElements.fList);
     s += this.closeFile();
