@@ -4,15 +4,15 @@ Automagically generate mocha test from your soliddity class compiled by truffle.
 
 WORK IN PROGRESS
 
-- [ ] add design
-- [ ] interface to import json
-- [ ] interface to copy result to clipboard
-- [ ] implement parse of event
+- [x] add design
+- [x] interface to import json
+- [x] interface to copy result to clipboard
+- [x] implement parse of event
 - [ ] write a real readme
 - [ ] generate gaz consumption test
 - [ ] Add licence file
 - [ ] Refactoring
-- [ ] Add live version on github
+- [x] Add live version on github
 
 
 # How to Use this App
