@@ -14,6 +14,7 @@ WORK IN PROGRESS
 - [ ] Refactoring
 - [x] Add live version on github
 
+link: https://nicolaskritter.github.io/solidity-mocha-tests-generator/
 
 # How to Use this App
 - Put the json comiled by truffle containing the abi in the data folder and rename it 'contract.json'
