@@ -53,22 +53,20 @@ export class UnitTestWriterService {
     });
     return res;
   }
-  static writeInputs(inputs: ContractInsOuts[]): string[] {
-    let s = '';
-    let helper = '';
+  static writeInputs(inputs: ContractInsOuts[]): any {
+    let ins = '';
+    let vars = '';
     let input: ParsedOut;
     inputs.forEach(e => {
       input = ApiParserService.parseIn(e);
-      helper += ` ${input.transfo}: ${input.realType},`;
-      s += `${input.val} ,`;
+      vars += `const ${input.transfo} = ${input.val}; // ${input.realType}` + '\n';
+      ins += ` ${input.transfo},`;
     });
-    if (s.length) {
-      s = s.slice(0, s.length - 1);
+    if (ins.length) {
+      ins = ins.slice(0, ins.length - 1);
     }
-    if (helper.length) {
-      helper = helper.slice(0, helper.length - 1);
-    }
-    return [s, helper];
+
+    return {ins, vars};
   }
   static writeFunctionsTest(functionList: ContractElement[]): string {
     let s = ' ';
@@ -79,11 +77,14 @@ export class UnitTestWriterService {
   }
 
   static writeTestForFunction(func: ContractElement) {
+    console.log(func);
+
     const input = UnitTestWriterService.writeInputs(func.inputs);
     const output = UnitTestWriterService.writeOutputs(func.outputs);
     const res = `
     it('${func.name}', async ()=>{ //TODO TOCHECK
-     const result = await access.${func.name}(${input[0]}); // (${input[1]})
+    ${input.vars}
+     const result = await access.${func.name}(${input.ins});
      ${output}
     });
     `;
