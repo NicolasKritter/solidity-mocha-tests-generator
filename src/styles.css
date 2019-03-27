@@ -14,6 +14,9 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif;}
 .center_full{margin: auto;text-align: center;}
 .margin-center{margin: auto;}
 .mat-drawer-container{height:100%;}
+.angular-with-newlines {
+  white-space: pre-wrap;
+  }
 .headers-align .mat-expansion-panel-header-title,
 .headers-align .mat-expansion-panel-header-description {
   flex-basis: 0;
@@ -27,6 +30,8 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif;}
   align-items: center;
   justify-content: space-between;
 }
+.header-main{background:#212121;padding: 100px;}
+h1{font-size: 2.5em;}
 .fill-remaining-space{ flex: 1 1 auto;}
 .width-50{width: 50%;}
 .width-100{width: 100%;}
@@ -34,6 +39,7 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif;}
 .element_3-4{width: 75%;}
 .element_1-3{width: 33%;}
 .margin-h-15{margin: 0 15px;}
+.padding-15{padding: 15px;}
 .flex-block{display: flex;}
 .flex-block_column{
   flex-direction: column;
