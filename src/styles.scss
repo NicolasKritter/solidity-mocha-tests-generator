@@ -1,13 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/purple-green.css";
-.dark-primary-color    { background: #303F9F; }
-.default-primary-color { background: #3F51B5; }
-.light-primary-color   { background: #C5CAE9; }
-.text-primary-color    { color: #FFFFFF; }
-.accent-color          { background: #009688; }
-.primary-text-color    { color: #212121; }
-.secondary-text-color  { color: #757575; }
-.divider-color         { border-color: #BDBDBD; }
+@import "src/theme/theme.scss";
+@include mat-core();
+@include angular-material-theme($my-theme);
+
 html, body { height: 100%; margin: 0; width:100%;}
 body { font-family: Roboto, "Helvetica Neue", sans-serif;}
 .mat-sidenav{min-width: 260px;width:200px;}

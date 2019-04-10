@@ -15,7 +15,7 @@ export class UnitTestComponent implements OnInit {
   urlContractJson: string;
   file: File;
   fileName: string;
-  constructor(private unitTestWriterService: UnitTestWriterService) { }
+  constructor() { }
 
   ngOnInit() {
   }
