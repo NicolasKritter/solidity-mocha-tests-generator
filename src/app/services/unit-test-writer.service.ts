@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ContractInsOuts } from '../model/contract-ins-outs';
-import { ContractElement } from '../model/contract-element';
-import { ApiParserService } from './api-parser.service';
-import { ParsedOut } from '../model/parsed-out';
+import { ContractInsOuts } from '../class/contract-ins-outs';
+import { ContractElement } from '../class/contract-element';
+import { AbiParserService } from './abi-parser.service';
+import { ParsedOut } from '../class/parsed-out';
 
 @Injectable({
   providedIn: 'root'
@@ -46,7 +46,7 @@ export class UnitTestWriterService {
 
     let i = 0;
     outputs.forEach(e => {
-      out = ApiParserService.parseOut(e);
+      out = AbiParserService.parseOut(e);
       res += `assert.equal(result['${i}']${out.transfo}, ${out.val}, "should be ${out.val} and type ${out.realType}");
        `;
       i++;
@@ -58,7 +58,7 @@ export class UnitTestWriterService {
     let vars = '';
     let input: ParsedOut;
     inputs.forEach(e => {
-      input = ApiParserService.parseIn(e);
+      input = AbiParserService.parseIn(e);
       vars += `const ${input.transfo} = ${input.val}; // ${input.realType}` + '\n';
       ins += ` ${input.transfo},`;
     });
@@ -95,7 +95,7 @@ export class UnitTestWriterService {
     let helper = '';
     let output: ParsedOut;
     outputs.forEach(element => {
-      output = ApiParserService.parseIn(element);
+      output = AbiParserService.parseIn(element);
       s += ` ev.${element.name} == ${output.val} &`;
       helper += ` ${output.transfo}: ${output.realType},`;
     });
@@ -129,8 +129,9 @@ export class UnitTestWriterService {
   }
 
   static writeTest(contract: any): string [] {
-    const sortedElements = ApiParserService.parseABIForElements(contract);
-    const contractName = ApiParserService.getContractName(contract);
+    const sortedElements = AbiParserService.parseABIForElements(contract);
+    const contractName = AbiParserService.getContractName(contract);
+    console.log('sorted', sortedElements);
     const eventList = UnitTestWriterService.writeEventsTest(sortedElements.eList);
     let s = this.initFile(contractName);
     s += this.addContract(contractName);
@@ -139,8 +140,4 @@ export class UnitTestWriterService {
     return [s, eventList];
   }
 
-  test(contract: any): any {
-    // const sortedElements = ApiParserService.parseABIForElements(contract);
-    // console.log(UnitTestWriterService.writeEventsTest(sortedElements.eList));
-  }
 }

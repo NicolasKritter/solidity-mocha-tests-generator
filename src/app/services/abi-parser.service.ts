@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ContractElement } from '../model/contract-element';
-import { ContractInsOuts } from '../model/contract-ins-outs';
-import { ParsedOut } from '../model/parsed-out';
+import { ContractElement } from '../class/contract-element';
+import { ContractInsOuts } from '../class/contract-ins-outs';
+import { ParsedOut } from '../class/parsed-out';
 declare function require(url: string): any;
 // const contract = require('../data/contract.json');
 const ASSERT_BY_TYPE = require('../config/assert-by-type.json');
@@ -11,7 +11,7 @@ const TYPE_EVENT = 'event';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiParserService {
+export class AbiParserService {
   constructor() {}
 
   static parseOut(output: ContractInsOuts): ParsedOut {
@@ -78,7 +78,7 @@ export class ApiParserService {
   }
   static parseABIForElements(contract: any): any {
     if (!contract) { return {}; }
-    return ApiParserService.exctractElementByTypes(contract.abi);
+    return AbiParserService.exctractElementByTypes(contract.abi);
   }
 
 }

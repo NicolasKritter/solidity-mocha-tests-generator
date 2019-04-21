@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'unit-test', loadChildren: './unit-test-app/unit-test-app.module#UnitTestAppModule' },
+  { path: 'doc', loadChildren: './doc-app/doc-app.module#DocAppModule' },
 
 ];
 @NgModule({

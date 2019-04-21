@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ApiParserService } from './api-parser.service';
+import { DocWeb3WriterService } from './doc-web3-writer.service';
 
-describe('ApiParserService', () => {
+describe('DocWeb3WriterService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ApiParserService = TestBed.get(ApiParserService);
+    const service: DocWeb3WriterService = TestBed.get(DocWeb3WriterService);
     expect(service).toBeTruthy();
   });
 });

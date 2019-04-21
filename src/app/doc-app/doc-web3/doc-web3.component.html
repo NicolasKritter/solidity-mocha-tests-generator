@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <h2>Load ABI &amp; Generate Test File</h2>
+    <h2>Load ABI &amp; Generate Doc File</h2>
   </mat-toolbar-row>
 
 </mat-toolbar>
@@ -47,7 +47,7 @@
             required></textarea>
         </mat-form-field>
         <div class="element">
-          <button mat-flat-button color="primary" (click)="writeTest()">Generate Test</button>
+          <button mat-flat-button color="primary" (click)="writeDoc()">Generate Doc</button>
         </div>
 
       </div>
@@ -57,23 +57,23 @@
   </mat-tab>
 
   <mat-tab label="Result - Functions" *ngIf="result">
-    <div class="flex-line margin-h-15 fill-remaining-space">
+    <!-- <div class="flex-line margin-h-15 fill-remaining-space">
       <div class=" element">
         <mat-form-field class="element width-100">
           <textarea rows="25" matInput class="keep-lines code-font" placeholder="Mocha test file">{{result}}</textarea>
         </mat-form-field>
         <button mat-flat-button color="primary" (click)="copyResultToClipBoard()">Copy to ClipBoard</button>
       </div>
-    </div>
+    </div> -->
   </mat-tab>
   <mat-tab label="Result - Events" *ngIf="result">
-    <div class="flex-line margin-h-15 fill-remaining-space">
+    <!-- <div class="flex-line margin-h-15 fill-remaining-space">
       <div class="keep-lines element">
         <mat-form-field class="element width-100">
           <textarea rows="25" matInput class="keep-lines code-font" placeholder="Events test code">{{events}}</textarea>
         </mat-form-field>
         <button mat-flat-button color="primary" (click)="copyEventToClipBoard()">Copy to ClipBoard</button>
       </div>
-    </div>
+    </div> -->
   </mat-tab>
 </mat-tab-group>
