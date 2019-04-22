@@ -34,4 +34,5 @@ copyEventToClipBoard(): void {
   this.copyToClipboard(this.events);
 }
 
+
 }

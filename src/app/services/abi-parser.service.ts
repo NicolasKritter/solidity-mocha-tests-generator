@@ -12,7 +12,7 @@ const TYPE_EVENT = 'event';
   providedIn: 'root'
 })
 export class AbiParserService {
-  constructor() {}
+  constructor() { }
 
   static parseOut(output: ContractInsOuts): ParsedOut {
     let res: ParsedOut;
@@ -61,7 +61,7 @@ export class AbiParserService {
   private static exctractElementByTypes(abi: any) {
     const fList = [];
     const eList = [];
-    if (!abi) {return { fList, eList }; }
+    if (!abi) { return { fList, eList }; }
     abi.forEach((element: ContractElement) => {
       if (element.type === TYPE_FUNCTION) {
         fList.push(element);
@@ -76,8 +76,8 @@ export class AbiParserService {
     if (!contract) { return; }
     return contract.contractName;
   }
-  static parseABIForElements(contract: any): any {
-    if (!contract) { return {}; }
+  static parseABIForElements(contract: any): { fList: ContractElement[], eList: ContractElement[] } {
+    if (!contract) { return null; }
     return AbiParserService.exctractElementByTypes(contract.abi);
   }
 

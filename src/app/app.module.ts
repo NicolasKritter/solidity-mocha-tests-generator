@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-import { DocAppModule } from './doc-app/doc-app/doc-app.module';
 
 
 @NgModule({
@@ -21,7 +20,6 @@ import { DocAppModule } from './doc-app/doc-app/doc-app.module';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    DocAppModule
   ],
   providers: [],
   bootstrap: [AppComponent]
