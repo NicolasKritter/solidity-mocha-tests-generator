@@ -1,5 +1,5 @@
-import { UnitTestWriterService } from './../../services/unit-test-writer.service';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { UnitTestWriterService } from 'src/app/services/unit-test-writer.service';
+import { Component, OnInit,  } from '@angular/core';
 import { FileImportAbstractComponent } from 'src/app/models/file-import.abstract';
 
 @Component({

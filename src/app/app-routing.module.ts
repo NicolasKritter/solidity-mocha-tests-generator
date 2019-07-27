@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'unit-test', loadChildren: './unit-test-app/unit-test-app.module#UnitTestAppModule' },
-  { path: 'doc', loadChildren: './doc-app/doc-app.module#DocAppModule' },
+  { path: '', component: HomeComponent },
+  { path: 'unit-test', loadChildren: () => import('./unit-test-app/unit-test-app.module').then(m => m.UnitTestAppModule) },
+  { path: 'doc', loadChildren: () => import('./doc-app/doc-app.module').then(m => m.DocAppModule) },
 
 ];
 @NgModule({

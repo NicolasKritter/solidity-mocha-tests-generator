@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 export abstract class FileImportAbstractComponent implements OnInit {
 
-  @ViewChild('fileInput') fileInput: ElementRef;
+  @ViewChild('fileInput', {static: true}) fileInput: ElementRef;
 
   abiInput: string;
   urlContractJson: string;
