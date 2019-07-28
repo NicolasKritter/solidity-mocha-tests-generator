@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AbiParserService } from './abi-parser.service';
-import { UnitTestWriterService } from './unit-test-writer.service';
 import { ContractElement } from '../class/contract-element';
 import { ContractInsOuts } from '../class/contract-ins-outs';
 
