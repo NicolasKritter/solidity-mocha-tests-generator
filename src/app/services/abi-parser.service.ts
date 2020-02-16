@@ -13,6 +13,7 @@ const TYPE_EVENT = 'event';
 })
 export class AbiParserService {
   constructor() { }
+  // TODO https://github.com/ethereum-ts/TypeChain/blob/39cba206d406623020eb84187edc8fca923e55e6/packages/typechain-target-web3-v2/lib/generation.ts
 
   static parseOut(output: ContractInsOuts): ParsedOut {
     let res: ParsedOut;
