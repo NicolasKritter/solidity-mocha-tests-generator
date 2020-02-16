@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { OnInit, ViewChild, ElementRef } from '@angular/core';
 
 
 export abstract class FileImportAbstractComponent implements OnInit {
 
-  @ViewChild('fileInput', {static: true}) fileInput: ElementRef;
+  @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
 
   abiInput: string;
   urlContractJson: string;
@@ -34,14 +34,14 @@ export abstract class FileImportAbstractComponent implements OnInit {
       this.abiInput = fileReader.result.toString();
     };
     fileReader.readAsText(this.file);
-}
+  }
 
-protected copyToClipboard(item: any): void {
-  document.addEventListener('copy', (e: ClipboardEvent) => {
-    e.clipboardData.setData('text/plain', (item));
-    e.preventDefault();
-    document.removeEventListener('copy', null);
-  });
-  document.execCommand('copy');
-}
+  protected copyToClipboard(item: any): void {
+    document.addEventListener('copy', (e: ClipboardEvent) => {
+      e.clipboardData.setData('text/plain', (item));
+      e.preventDefault();
+      document.removeEventListener('copy', null);
+    });
+    document.execCommand('copy');
+  }
 }
