@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { TxDecodeAppRoutingModule } from './tx-decode-app-routing.module';
 import { TxDecoderComponent } from './tx-decoder/tx-decoder.component';
+import { MaterialModule } from '../shared/material/material.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -10,6 +12,7 @@ import { TxDecoderComponent } from './tx-decoder/tx-decoder.component';
   imports: [
     CommonModule,
     MaterialModule,
+    FormsModule,
     TxDecodeAppRoutingModule
   ]
 })
