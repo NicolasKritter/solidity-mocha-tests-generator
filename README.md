@@ -12,6 +12,8 @@ WORK IN PROGRESS
 - [ ] generate gaz consumption test
 - [ ] Add licence file
 - [ ] Refactoring
+- [ ] Rework design theme
+- [ ] Add app to creta bcode for abi integration in d-app
 - [x] Add live version on github
 
 link: https://nicolaskritter.github.io/solidity-mocha-tests-generator/
