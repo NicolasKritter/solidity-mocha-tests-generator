@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import "src/theme/theme.scss";
-@include mat-core();
-@include angular-material-theme($my-theme);
 
 html, body { height: 100%; margin: 0; width:100%;}
 body { font-family: Roboto, "Helvetica Neue", sans-serif;}
@@ -25,7 +23,7 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif;}
   align-items: center;
   justify-content: space-between;
 }
-.header-main{background:#212121;padding: 100px;}
+.header-main{padding: 100px;}
 h1{font-size: 2.5em;}
 .fill-remaining-space{ flex: 1 1 auto;}
 .width-50{width: 50%;}

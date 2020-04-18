@@ -25,7 +25,7 @@ export class TransactionDecoderService {
     };
   }
 
- private getFunctionData(abi): string[] {
+  private getFunctionData(abi): string[] {
     const functionData = [];
     for (const item of abi) {
       // eslint-disable-next-line security/detect-object-injection
@@ -49,7 +49,7 @@ export class TransactionDecoderService {
     return this.web3.eth.abi.decodeParameters(params, txData);
   }
 
-  private findFunctionByHash(functionDatas, functionHash): any {
+  private findFunctionByHash(functionDatas, functionHash: string): any {
     for (const fn of functionDatas) {
       if (fn.hash.substring(0, 10) === functionHash.substring(0, 10)) {
         return fn;

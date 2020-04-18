@@ -47,7 +47,7 @@
             [(ngModel)]="abiInput" required></textarea>
         </mat-form-field>
         <div class="element">
-          <button mat-flat-button color="primary" (click)="writeDoc()">Generate Doc</button>
+          <button mat-flat-button color="accent" (click)="writeDoc()">Generate Doc</button>
         </div>
 
       </div>
@@ -62,7 +62,7 @@
       <mat-expansion-panel *ngIf="result.fList">
         <mat-expansion-panel-header>
           <mat-panel-title>
-           Public & external functions
+            Public & external functions
           </mat-panel-title>
           <mat-panel-description>
             {{result.fList.length}} items
@@ -70,7 +70,7 @@
         </mat-expansion-panel-header>
         <mat-list>
           <mat-list-item *ngFor="let funct of result?.fList;let index = index;  trackBy index"
-          [ngClass]="{'fn-view': funct.stateMutability==='view','fn-pure':funct.stateMutability==='pure','cost-gaz':!funct.constant}">
+            [ngClass]="{'fn-view': funct.stateMutability==='view','fn-pure':funct.stateMutability==='pure','cost-gaz':!funct.constant}">
             {{funct.name}}{{funct.inputs}} ➠ {{funct.outputs}} ({{funct.stateMutability}})
           </mat-list-item>
         </mat-list>
@@ -104,7 +104,7 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <!-- Payable: {{funct.payable}} -->
-        <!-- Change the contract state: {{!funct.constant}}
+    <!-- Change the contract state: {{!funct.constant}}
       </mat-expansion-panel>
     </mat-accordion> -->
 

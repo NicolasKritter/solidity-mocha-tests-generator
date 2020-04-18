@@ -1,46 +1,35 @@
 <div class="page-root">
 
-<mat-toolbar color="primary" role="header">
-  <button mat-icon-button (click)="sidenav.toggle()">
-    <mat-icon arial-label="menu">menu</mat-icon>
-  </button>
+  <mat-toolbar color="primary" role="header">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon arial-label="menu">menu</mat-icon>
+    </button>
 
-    <a mat-button [routerLink]="''"> <h1 >Solidity MochaJs Test Generator </h1> </a>
-<!-- TODO DOC generator -->
-</mat-toolbar>
+    <a mat-button [routerLink]="''">
+      <h1>DApp toolkit for ethereum developpment </h1>
+    </a>
+    <span class="element"></span>
+    <app-theme-picker> </app-theme-picker>
 
-<mat-sidenav-container >
+  </mat-toolbar>
 
-  <mat-sidenav #sidenav mode="side" opened cdkscrollable >
+  <mat-sidenav-container>
+
+    <mat-sidenav #sidenav mode="side" opened cdkscrollable>
       <mat-nav-list>
-          <a mat-list-item [routerLink]="'/unit-test'">Unit Test</a>
-          <a mat-list-item [routerLink]="'/doc'">Doc web3</a>
-          <a mat-list-item [routerLink]="'/tx-decoder'">Transaction decoder</a>
-
-
+        <a mat-list-item [routerLink]="'/unit-test'">Unit Test</a>
+        <a mat-list-item [routerLink]="'/doc'">Doc web3</a>
+        <a mat-list-item [routerLink]="'/tx-decoder'">Transaction decoder</a>
 
       </mat-nav-list>
 
-    <!-- <mat-accordion>
+    </mat-sidenav>
 
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          Test
-        </mat-expansion-panel-header>
-        <mat-nav-list>
-        </mat-nav-list>
-      </mat-expansion-panel>
+    <mat-sidenav-content class="page-root">
+      <!-- <div class="toggle-sidenav"> </div> -->
+      <router-outlet>
+      </router-outlet>
+    </mat-sidenav-content>
 
-
-    </mat-accordion> -->
-
-  </mat-sidenav>
-
-  <mat-sidenav-content class="page-root">
-    <!-- <div class="toggle-sidenav"> </div> -->
-    <router-outlet>
-    </router-outlet>
-  </mat-sidenav-content>
-
-</mat-sidenav-container>
+  </mat-sidenav-container>
 </div>

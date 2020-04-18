@@ -6,7 +6,7 @@ export class ContractElement {
   inputs: ContractInsOuts[];
   outputs: ContractInsOuts[];
   payable: boolean;
-  stateMutability: boolean;
+  stateMutability: string;
   type: string;
   signature: string;
 }

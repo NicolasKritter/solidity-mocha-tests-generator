@@ -1,4 +1,6 @@
 @import '~@angular/material/theming';
+@include mat-core();
+
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -13,7 +15,8 @@
 
 // @include angular-material-theme($my-theme);
 
-@import '~@angular/material/theming';
+// @import '~@angular/material/theming';
+
 $my-theme-primary: mat-palette($mat-indigo,500);
 $my-theme-accent : mat-palette($mat-cyan,600);
 $my-theme-warn   : mat-palette($mat-red);
@@ -22,3 +25,36 @@ $my-theme: mat-dark-theme(
     $my-theme-accent,
     $my-theme-warn
 );
+
+@include angular-material-theme($my-theme);
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+
+// Define the default theme (same as the example above).
+$candy-app-primary: mat-palette($mat-pink,200);
+$candy-app-accent:  mat-palette($mat-purple, A200, A100, A400);
+$candy-app-theme:  mat-dark-theme($candy-app-primary, $candy-app-accent);
+
+// Include the default theme styles.
+
+
+// Define an alternate dark theme.
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+$dark-warn:    mat-palette($mat-deep-orange);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+// Include the alternative theme styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+.unicorn-dark-theme {
+  @include angular-material-theme($dark-theme);
+}
+.candy-app-theme {
+  @include angular-material-theme($candy-app-theme);
+}
+

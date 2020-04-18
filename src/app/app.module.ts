@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { ThemePickerModule } from './theme-picker/theme-picker.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    ThemePickerModule,
     FormsModule,
   ],
   providers: [],
