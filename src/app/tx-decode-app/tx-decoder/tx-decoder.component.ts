@@ -10,6 +10,7 @@ import { TransactionDecoderService } from 'src/app/services/transaction-decoder.
 export class TxDecoderComponent extends FileImportAbstractComponent implements OnInit {
   public txData: string;
   public result: string;
+  public events: string
   constructor(private txDecoder: TransactionDecoderService) {
     super();
   }
@@ -23,5 +24,12 @@ export class TxDecoderComponent extends FileImportAbstractComponent implements O
 
   public decodeData() {
     this.result = this.txDecoder.parseTxInputs(this.txData);
+  }
+
+  copyResultToClipBoard(): void {
+    this.copyToClipboard(this.result);
+  }
+  copyEventToClipBoard(): void {
+    this.copyToClipboard(this.events);
   }
 }
