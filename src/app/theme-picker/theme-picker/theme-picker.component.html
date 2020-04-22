@@ -1,6 +1,8 @@
-<mat-icon class="icon" [matMenuTriggerFor]="menu">
-  palette
-</mat-icon>
+<button mat-icon-button>
+  <mat-icon class="icon" [matMenuTriggerFor]="menu">
+    palette
+  </mat-icon>
+</button>
 <mat-menu #menu="matMenu">
   <button *ngFor="let theme of themes" mat-menu-item (click)="selectTheme(theme.name)">
     <mat-icon role="img" svgicon="theme-example" aria-hidden="true">
