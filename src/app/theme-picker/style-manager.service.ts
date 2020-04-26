@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class StyleManagerService {
 
-  private static coreTheme = ['candy-app-theme', 'unicorn-dark-theme']
+  private static coreTheme = ['candy-app-theme', 'unicorn-dark-theme', 'indigo-pink'];
   constructor() { }
 
   setTheme(themeToSet: string): void {
@@ -40,7 +40,7 @@ export class StyleManagerService {
     return this.getExistingLinkElementByKey(key) || this.createLinkElementWithKey(key);
   }
 
-  private getExistingLinkElementByKey(key: string) {
+  private getExistingLinkElementByKey(key: string): Element {
     return document.head.querySelector(
       `link[rel="stylesheet"].${this.getClassNameForKey(key)}`
     );
