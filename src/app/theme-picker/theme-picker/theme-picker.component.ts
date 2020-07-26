@@ -41,14 +41,14 @@ export class ThemePickerComponent implements OnInit {
       isDark: true,
     },
     {
-      primary: '​#607d8b',
+      primary: '#607d8b',
       accent: '#ffd740',
       displayName: 'Unicord dark',
       name: 'unicorn-dark-theme',
       isDark: true,
     },
     {
-      primary: '​#ffc0cb',
+      primary: '#ffc0cb',
       accent: '#e040fb',
       displayName: 'Candy App',
       name: 'candy-app-theme',
