@@ -1,6 +1,7 @@
-import { OnInit, ViewChild, ElementRef } from '@angular/core';
+import { OnInit, ViewChild, ElementRef, Directive } from '@angular/core';
 
 
+@Directive()
 export abstract class FileImportAbstractComponent implements OnInit {
 
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
