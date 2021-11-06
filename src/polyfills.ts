@@ -17,7 +17,16 @@
 /** *************************************************************************************************
  * BROWSER POLYFILLS
  */
+(window as any).global = window;
+import { Buffer } from 'buffer';
+(global as any).Buffer = Buffer;
 
+global.process = global.process || {
+  env: {
+    DEBUG: undefined
+  },
+  version: ''
+} as any;
 /**
  * By default, zone.js will patch all possible macroTask and DomEvents
  * user can disable parts of macroTask/DomEvents patch by setting following flags

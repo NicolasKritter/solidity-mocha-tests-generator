@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ContractInsOuts } from 'app/class/contract-ins-outs';
 import { ParsedOut } from 'app/class/parsed-out';
 import { ASSERT_BY_TYPE } from 'app/config/types';
-import { AbiItem } from 'web3-utils';
+import { AbiItem, AbiInput, AbiOutput } from 'web3-utils';
 
 const TYPE_FUNCTION = 'function';
 const TYPE_EVENT = 'event';
@@ -13,7 +12,7 @@ export class AbiParserService {
   constructor() { }
   // TODO https://github.com/ethereum-ts/TypeChain/blob/39cba206d406623020eb84187edc8fca923e55e6/packages/typechain-target-web3-v2/lib/generation.ts
 
-  static parseOut(output: ContractInsOuts): ParsedOut {
+  static parseOut(output: AbiInput | AbiOutput): ParsedOut {
     let res: ParsedOut;
     switch (ASSERT_BY_TYPE[output.type]) {
       case 'int':
@@ -35,7 +34,7 @@ export class AbiParserService {
     return res;
   }
 
-  static parseIn(input: ContractInsOuts): ParsedOut {
+  static parseIn(input: AbiInput | AbiOutput): ParsedOut {
     let res: ParsedOut;
     switch (ASSERT_BY_TYPE[input.type]) {
       case 'int':

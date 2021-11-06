@@ -26,13 +26,21 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": false,
+    "paths" : {
+      "crypto": ["../node_modules/crypto-browserify"],
+      "stream": ["../node_modules/stream-browserify"],
+      "assert": ["../node_modules/assert"],
+      "http": ["../node_modules/stream-http"],
+      "https": ["../node_modules/https-browserify"],
+      "os": ["../node_modules/os-browserify"],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": false,
+    "strictTemplates":false,
     "fullTemplateTypeCheck": true,
-    "enableIvy": true
+    "enableIvy":true
   }
 }

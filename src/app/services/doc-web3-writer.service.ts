@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbiParserService } from './abi-parser.service';
-import { ContractInsOuts } from '../class/contract-ins-outs';
-import { AbiItem } from 'web3-utils';
+import { AbiItem, AbiInput, AbiOutput } from 'web3-utils';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +33,7 @@ export class DocWeb3WriterService {
     return res;
   }
 
-  private static parseInOut(inouts: ContractInsOuts[]): string {
+  private static parseInOut(inouts: (AbiInput | AbiOutput)[]): string {
     if (!inouts || inouts.length < 1) { return '()'; }
     let str = '(';
     inouts.forEach(element => {

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ContractInsOuts } from 'app/class/contract-ins-outs';
 import { ParsedOut } from 'app/class/parsed-out';
 import { AbiParserService } from './abi-parser.service';
-import { AbiItem } from 'web3-utils';
+import { AbiItem, AbiInput, AbiOutput } from 'web3-utils';
 
 // TODO! check AbiInput for ContractInsOuts
 @Injectable({
@@ -38,7 +37,7 @@ export class UnitTestWriterService {
   static closeFile(): string {
     return '});';
   }
-  static writeOutputs(outputs: ContractInsOuts[]): string {
+  static writeOutputs(outputs: (AbiInput | AbiOutput)[]): string {
     if (outputs.length < 1) {
       return '//TODO Attach Event or getter';
     }
@@ -54,7 +53,7 @@ export class UnitTestWriterService {
     });
     return res;
   }
-  static writeInputs(inputs: ContractInsOuts[]): any {
+  static writeInputs(inputs: (AbiInput | AbiOutput)[]): any {
     let ins = '';
     let vars = '';
     let input: ParsedOut;
@@ -91,7 +90,7 @@ export class UnitTestWriterService {
     `;
     return res;
   }
-  static writeOutputsEvent(outputs: ContractInsOuts[]): string[] {
+  static writeOutputsEvent(outputs: (AbiInput | AbiOutput)[]): string[] {
     let s = '';
     let helper = '';
     let output: ParsedOut;

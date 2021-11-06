@@ -30,4 +30,8 @@ export class DocWeb3Component extends FileImportAbstractComponent implements OnI
   public filterBy(array: any[], prop: string) {
     return array.sort((a, b) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
   }
+
+  public trackByFn(index: number): number {
+    return index;
+  }
 }
