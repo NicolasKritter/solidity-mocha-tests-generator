@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { DocWeb3WriterService } from 'src/app/services/doc-web3-writer.service';
-import { FileImportAbstractComponent } from 'src/app/models/file-import.abstract';
-import { ContractElement } from 'src/app/class/contract-element';
+import { Component, OnInit } from '@angular/core';
+import { FileImportAbstractComponent } from 'app/models/file-import.abstract';
+import { DocWeb3WriterService } from 'app/services/doc-web3-writer.service';
+import { AbiItem } from 'web3-utils';
+
 
 @Component({
   selector: 'app-doc-web3',
@@ -9,16 +10,16 @@ import { ContractElement } from 'src/app/class/contract-element';
   styleUrls: ['./doc-web3.component.css']
 })
 export class DocWeb3Component extends FileImportAbstractComponent implements OnInit {
-  result: { fList: ContractElement[], eList: ContractElement[] };
+  result: { fList: AbiItem[]; eList: AbiItem[] };
 
   constructor() {
     super();
   }
 
-  ngOnInit() {
+  override ngOnInit() {
   }
 
-  writeDoc(): void {
+  public writeDoc(): void {
     if (!this.abiInput) { return; }
     const parsedContract = JSON.parse(this.abiInput);
     // this.unitTestWriterService.test(parsedContract);
@@ -26,7 +27,7 @@ export class DocWeb3Component extends FileImportAbstractComponent implements OnI
     console.log(this.result);
   }
 
-  filterBy(array: any[], prop: string ) {
+  public filterBy(array: any[], prop: string) {
     return array.sort((a, b) => a[prop] > b[prop] ? 1 : a[prop] === b[prop] ? 0 : -1);
   }
 }

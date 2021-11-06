@@ -1,13 +1,14 @@
-import { MaterialModule } from 'src/app/shared/material/material.module';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
-import { HomeComponent } from './home/home.component';
-import { ThemePickerModule } from './theme-picker/theme-picker.module';
+import { BrowserModule } from "@angular/platform-browser";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { HomeComponent } from "./home/home.component";
+import { MaterialModule } from "./shared/material/material.module";
+import { ThemePickerModule } from "./theme-picker/theme-picker.module";
+
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { ThemePickerModule } from './theme-picker/theme-picker.module';
     BrowserAnimationsModule,
     MaterialModule,
     ThemePickerModule,
-    FormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

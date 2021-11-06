@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { TxDecodeAppRoutingModule } from './tx-decode-app-routing.module';
 import { TxDecoderComponent } from './tx-decoder/tx-decoder.component';
-import { MaterialModule } from '../shared/material/material.module';
 import { FormsModule } from '@angular/forms';
+import { MaterialModule } from 'app/shared/material/material.module';
 
 
 @NgModule({

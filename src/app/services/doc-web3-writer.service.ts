@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbiParserService } from './abi-parser.service';
-import { ContractElement } from '../class/contract-element';
 import { ContractInsOuts } from '../class/contract-ins-outs';
+import { AbiItem } from 'web3-utils';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +9,8 @@ import { ContractInsOuts } from '../class/contract-ins-outs';
 export class DocWeb3WriterService {
 
   constructor() { }
-
-  static writeDoc(contract: any): { fList: ContractElement[], eList: ContractElement[] } {
+  //TODO! type is contract
+  static writeDoc(contract: any): { fList: AbiItem[]; eList: AbiItem[] } {
     const sortedElements = AbiParserService.parseABIForElements(contract);
     const contractName = AbiParserService.getContractName(contract);
     console.log('sorted', sortedElements);
@@ -23,7 +23,7 @@ export class DocWeb3WriterService {
     return AbiParserService.parseABIForElements(contract);
   }
 
-  static parseFunctions(functionList: ContractElement[]) {
+  static parseFunctions(functionList: AbiItem[]) {
     const res = [];
     functionList.forEach(element => {
       const e: any = element;

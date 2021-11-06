@@ -10,7 +10,7 @@ describe('TxDecoderComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ TxDecoderComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

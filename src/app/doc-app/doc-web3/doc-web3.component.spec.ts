@@ -10,7 +10,7 @@ describe('DocWeb3Component', () => {
     TestBed.configureTestingModule({
       declarations: [ DocWeb3Component ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

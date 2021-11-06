@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ThemePickerComponent } from './theme-picker/theme-picker.component';
-import { MaterialModule } from 'src/app/shared/material/material.module';
 import { MatMenuModule } from '@angular/material/menu';
+import { MaterialModule } from 'app/shared/material/material.module';
+import { ThemePickerComponent } from './theme-picker/theme-picker.component';
 
 
 

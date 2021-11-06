@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FileImportAbstractComponent } from 'src/app/models/file-import.abstract';
-import { TransactionDecoderService } from 'src/app/services/transaction-decoder.service';
+import { FileImportAbstractComponent } from 'app/models/file-import.abstract';
+import { TransactionDecoderService } from 'app/services/transaction-decoder.service';
+import { Transaction } from 'web3-core';
+
 
 @Component({
   selector: 'app-tx-decoder',
@@ -8,14 +10,15 @@ import { TransactionDecoderService } from 'src/app/services/transaction-decoder.
   styleUrls: ['./tx-decoder.component.css']
 })
 export class TxDecoderComponent extends FileImportAbstractComponent implements OnInit {
-  public txData: string;
-  public result: string;
-  public events: string
+  public txData: Transaction;
+  // @typescript-eslint/no-explicit-any
+  public result: { functionCalled: any; parameters: any; };
+  public events: string;
   constructor(private txDecoder: TransactionDecoderService) {
     super();
   }
 
-  ngOnInit() {
+  override ngOnInit() {
   }
 
   public loadAbi() {

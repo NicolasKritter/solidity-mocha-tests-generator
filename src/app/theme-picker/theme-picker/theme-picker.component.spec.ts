@@ -10,7 +10,7 @@ describe('ThemePickerComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ThemePickerComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,60 +1,66 @@
 import { Injectable } from '@angular/core';
-declare let require: any;
-const Web3 = require('web3');
+import Web3 from 'web3';
+import { Transaction } from 'web3-core';
+import { AbiItem, AbiInput, AbiOutput } from 'web3-utils';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionDecoderService {
-  web3: any;
-  functionsDatas: any[];
+  public web3: Web3;
+  public hashes: { name: string; hash: string; inputs: AbiInput[]; outputs: AbiOutput[] }[];
   constructor() {
     this.web3 = new Web3();
   }
-
+  //TODO acontract type
   public loadAbi(abi: any): void {
-    this.functionsDatas = this.getFunctionData(abi);
+    this.hashes = this.getFunctionHashes(abi);
   }
+  //TODO add getTransationDatafromHash
 
-  public parseTxInputs(txData): any {
-    const functionCalled = this.findFunctionByHash(this.functionsDatas, txData.input);
+  public parseTxInputs(txData: Transaction): { functionCalled: any; parameters: any } {
+    const functionCalled = this.findFunctionByHash(txData.input);
     const parameters = this.parseBlockTransactionParameters(functionCalled.inputs, txData.input);
     return {
       functionCalled,
-      parameters,
+      parameters
     };
   }
 
-  private getFunctionData(abi): string[] {
-    const functionData = [];
-    for (const item of abi) {
+  public findFunctionByHash(functionHash: string): { name: string; hash: string; inputs: AbiInput[]; outputs: AbiOutput[] } | null {
+    for (let i = 0; i < this.hashes.length; i++) {
+      if (this.hashes[i].hash.substring(0, 10) === functionHash.substring(0, 10)) {
+        return this.hashes[i];
+      }
+    }
+    return null;
+  }
+
+  private getFunctionHashes(abi: AbiItem[]): { name: string; hash: string; inputs: AbiInput[]; outputs: AbiOutput[] }[] {
+    const hashes = [];
+    for (let i = 0; i < abi.length; i++) {
       // eslint-disable-next-line security/detect-object-injection
+      const item = abi[i];
       if (item.type === 'function') {
-        const signature = `${item.name}(${item.inputs.map(input => input.type).join(',')})`;
+        const signature = `${item.name}(${item.inputs?.map((input) => input.type).join(',')})`;
         const hash = this.web3.utils.sha3(signature);
-        functionData.push({
-          name: item.name,
+        hashes.push({
+          name: item.name || '',
           hash,
-          inputs: item.inputs,
-          outputs: item.outputs,
+          inputs: item.inputs || [],
+          outputs: item.outputs || []
         });
       }
     }
-    return functionData;
+    return hashes;
   }
 
-  private parseBlockTransactionParameters(params, txData): any {
+  private parseBlockTransactionParameters(params: AbiInput[], txData: string): { [key: string]: unknown; } {
     txData = txData.slice(10);
     txData = `0x${txData}`;
     return this.web3.eth.abi.decodeParameters(params, txData);
   }
 
-  private findFunctionByHash(functionDatas, functionHash: string): any {
-    for (const fn of functionDatas) {
-      if (fn.hash.substring(0, 10) === functionHash.substring(0, 10)) {
-        return fn;
-      }
-    }
-    return null;
-  }
+
 }

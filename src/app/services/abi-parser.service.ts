@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ContractElement } from '../class/contract-element';
-import { ContractInsOuts } from '../class/contract-ins-outs';
-import { ParsedOut } from '../class/parsed-out';
-declare function require(url: string): any;
-// const contract = require('../data/contract.json');
-const ASSERT_BY_TYPE = require('../config/assert-by-type.json');
+import { ContractInsOuts } from 'app/class/contract-ins-outs';
+import { ParsedOut } from 'app/class/parsed-out';
+import { ASSERT_BY_TYPE } from 'app/config/types';
+import { AbiItem } from 'web3-utils';
 
 const TYPE_FUNCTION = 'function';
 const TYPE_EVENT = 'event';
@@ -22,7 +20,7 @@ export class AbiParserService {
         res = new ParsedOut('.toNumber()', '42', output.type);
         break;
       case 'string':
-        res = new ParsedOut('', `'myString'`, output.type);
+        res = new ParsedOut('', '\'myString\'', output.type);
         break;
       case 'bool':
         res = new ParsedOut('', 'true', output.type);
@@ -63,7 +61,7 @@ export class AbiParserService {
     const fList = [];
     const eList = [];
     if (!abi) { return { fList, eList }; }
-    abi.forEach((element: ContractElement) => {
+    abi.forEach((element: AbiItem) => {
       if (element.type === TYPE_FUNCTION) {
         fList.push(element);
       } else if (element.type === TYPE_EVENT) {
@@ -74,10 +72,10 @@ export class AbiParserService {
   }
 
   static getContractName(contract: any): string {
-    if (!contract) { return; }
+    if (!contract) { return ''; }
     return contract.contractName;
   }
-  static parseABIForElements(contract: any): { fList: ContractElement[], eList: ContractElement[] } {
+  static parseABIForElements(contract: any): { fList: AbiItem[]; eList: AbiItem[] } {
     if (!contract) { return null; }
     return AbiParserService.exctractElementByTypes(contract.abi);
   }

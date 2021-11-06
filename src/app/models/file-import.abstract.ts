@@ -6,20 +6,20 @@ export abstract class FileImportAbstractComponent implements OnInit {
 
   @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
 
-  abiInput: string;
-  urlContractJson: string;
-  file: File;
-  fileName: string;
+  public abiInput: string;
+  public urlContractJson: string;
+  public file: File;
+  public fileName: string;
   constructor() { }
 
   ngOnInit() {
   }
 
-  selectFile(): void {
+  public selectFile(): void {
     this.fileInput.nativeElement.click();
   }
 
-  onFileChanged(e: any): void {
+  public onFileChanged(e: any): void {
     this.file = e.target.files[0];
     this.fileName = this.file.name;
     if (this.fileName.endsWith('.json')) {
@@ -27,11 +27,12 @@ export abstract class FileImportAbstractComponent implements OnInit {
     }
 
   }
-  parseFileToContractJson() {
+
+  public parseFileToContractJson() {
     // const parsed = JSON.parse(this.file);
     if (!this.file) { return; }
     const fileReader = new FileReader();
-    fileReader.onload = (e) => {
+    fileReader.onload = () => {
       this.abiInput = fileReader.result.toString();
     };
     fileReader.readAsText(this.file);

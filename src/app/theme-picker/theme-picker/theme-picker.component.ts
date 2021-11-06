@@ -10,13 +10,14 @@ import { StyleManagerService } from '../style-manager.service';
 export class ThemePickerComponent implements OnInit {
   currentTheme: string;
   // The below colors need to align with the themes defined in theme-picker.scss
+  // @typescript-eslint/no-explicit-any
   themes: any[] = [
     {
       primary: '#673AB7',
       accent: '#FFC107',
       displayName: 'Deep Purple & Amber',
       name: 'deeppurple-amber',
-      isDark: false,
+      isDark: false
     },
     {
       primary: '#3F51B5',
@@ -24,36 +25,36 @@ export class ThemePickerComponent implements OnInit {
       displayName: 'Indigo & Pink',
       name: 'indigo-pink',
       isDark: false,
-      isDefault: true,
+      isDefault: true
     },
     {
       primary: '#E91E63',
       accent: '#607D8B',
       displayName: 'Pink & Blue-grey',
       name: 'pink-bluegrey',
-      isDark: true,
+      isDark: true
     },
     {
       primary: '#9C27B0',
       accent: '#4CAF50',
       displayName: 'Purple & Green',
       name: 'purple-green',
-      isDark: true,
+      isDark: true
     },
     {
       primary: '#607d8b',
       accent: '#ffd740',
       displayName: 'Unicord dark',
       name: 'unicorn-dark-theme',
-      isDark: true,
+      isDark: true
     },
     {
       primary: '#ffc0cb',
       accent: '#e040fb',
       displayName: 'Candy App',
       name: 'candy-app-theme',
-      isDark: true,
-    },
+      isDark: true
+    }
   ];
 
   constructor(private styleManagerService: StyleManagerService) {

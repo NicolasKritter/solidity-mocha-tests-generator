@@ -1,6 +1,6 @@
-import { UnitTestWriterService } from 'src/app/services/unit-test-writer.service';
-import { Component, OnInit,  } from '@angular/core';
-import { FileImportAbstractComponent } from 'src/app/models/file-import.abstract';
+import { Component, OnInit } from '@angular/core';
+import { FileImportAbstractComponent } from 'app/models/file-import.abstract';
+import { UnitTestWriterService } from 'app/services/unit-test-writer.service';
 
 @Component({
   selector: 'app-unit-test',
@@ -13,13 +13,13 @@ export class UnitTestComponent extends FileImportAbstractComponent implements On
 
   constructor() {
     super();
-   }
-
-  ngOnInit() {
   }
 
-  writeTest(): void {
-    if (!this.abiInput) {return; }
+  override ngOnInit() {
+  }
+
+  public writeTest(): void {
+    if (!this.abiInput) { return; }
     const parsedContract = JSON.parse(this.abiInput);
     // this.unitTestWriterService.test(parsedContract);
     const txtJs = UnitTestWriterService.writeTest(parsedContract);
@@ -27,12 +27,12 @@ export class UnitTestComponent extends FileImportAbstractComponent implements On
     this.events = txtJs[1];
   }
 
-copyResultToClipBoard(): void {
-  this.copyToClipboard(this.result);
-}
-copyEventToClipBoard(): void {
-  this.copyToClipboard(this.events);
-}
+  public copyResultToClipBoard(): void {
+    this.copyToClipboard(this.result);
+  }
+  public copyEventToClipBoard(): void {
+    this.copyToClipboard(this.events);
+  }
 
 
 }

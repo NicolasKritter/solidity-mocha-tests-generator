@@ -1,10 +1,10 @@
-import { MaterialModule } from './../shared/material/material.module';
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { MaterialModule } from "app/shared/material/material.module";
+import { UnitTestRoutingModule } from "./unit-test-app-routing.module";
+import { UnitTestComponent } from "./unit-test/unit-test.component";
 
-import { UnitTestRoutingModule } from './unit-test-app-routing.module';
-import { UnitTestComponent } from './unit-test/unit-test.component';
-import { FormsModule } from '@angular/forms';
 
 
 @NgModule({

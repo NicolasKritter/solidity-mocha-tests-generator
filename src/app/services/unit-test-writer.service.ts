@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { ContractInsOuts } from '../class/contract-ins-outs';
-import { ContractElement } from '../class/contract-element';
+import { ContractInsOuts } from 'app/class/contract-ins-outs';
+import { ParsedOut } from 'app/class/parsed-out';
 import { AbiParserService } from './abi-parser.service';
-import { ParsedOut } from '../class/parsed-out';
+import { AbiItem } from 'web3-utils';
 
+// TODO! check AbiInput for ContractInsOuts
 @Injectable({
   providedIn: 'root'
 })
 export class UnitTestWriterService {
-  constructor() {}
+  constructor() { }
 
   static initFile(name: string): string {
     return `
@@ -66,9 +67,9 @@ export class UnitTestWriterService {
       ins = ins.slice(0, ins.length - 1);
     }
 
-    return {ins, vars};
+    return { ins, vars };
   }
-  static writeFunctionsTest(functionList: ContractElement[]): string {
+  static writeFunctionsTest(functionList: AbiItem[]): string {
     let s = ' ';
     functionList.forEach(element => {
       s += UnitTestWriterService.writeTestForFunction(element);
@@ -76,7 +77,7 @@ export class UnitTestWriterService {
     return s;
   }
 
-  static writeTestForFunction(func: ContractElement) {
+  static writeTestForFunction(func: AbiItem) {
     console.log(func);
 
     const input = UnitTestWriterService.writeInputs(func.inputs);
@@ -109,7 +110,7 @@ export class UnitTestWriterService {
     return [s, helper];
   }
 
-  static writeEvent(event: ContractElement): string {
+  static writeEvent(event: AbiItem): string {
     const outputParsed = UnitTestWriterService.writeOutputsEvent(event.inputs);
     const s = `
             truffleAssert.eventEmitted(callThatTriggersTheEvent, '${event.name}', (ev) => {
@@ -119,7 +120,7 @@ export class UnitTestWriterService {
     return s;
   }
 
-  static writeEventsTest(eventList: ContractElement[]): string {
+  static writeEventsTest(eventList: AbiItem[]): string {
     let s = '';
     eventList.forEach(element => {
       s += this.writeEvent(element);
@@ -127,8 +128,8 @@ export class UnitTestWriterService {
     });
     return s;
   }
-
-  static writeTest(contract: any): string [] {
+  //TODO! retunr type
+  static writeTest(contract: any): string[] {
     const sortedElements = AbiParserService.parseABIForElements(contract);
     const contractName = AbiParserService.getContractName(contract);
     console.log('sorted', sortedElements);
