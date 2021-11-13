@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "eslint": "eslint src/**/*.ts --ignore-pattern '*.spec.ts'",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy-git":"ng deploy --base-href=/solidity-mocha-tests-generator/"
   },
   "private": true,
   "dependencies": {
