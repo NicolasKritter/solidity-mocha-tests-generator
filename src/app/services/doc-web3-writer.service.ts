@@ -8,12 +8,13 @@ import { AbiItem, AbiInput, AbiOutput } from 'web3-utils';
 export class DocWeb3WriterService {
 
   constructor() { }
-  //TODO! type is contract
-  static writeDoc(contract: any): { fList: AbiItem[]; eList: AbiItem[] } {
+  // TODO! type is contract
+  static writeDoc(contract: any): { contractName: string; fList: AbiItem[]; eList: AbiItem[] } {
     const sortedElements = AbiParserService.parseABIForElements(contract);
     const contractName = AbiParserService.getContractName(contract);
     console.log('sorted', sortedElements);
     return {
+      contractName,
       fList: DocWeb3WriterService.parseFunctions(sortedElements.fList),
       eList: DocWeb3WriterService.parseFunctions(sortedElements.eList)
     };

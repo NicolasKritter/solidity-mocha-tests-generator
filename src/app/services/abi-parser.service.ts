@@ -56,6 +56,15 @@ export class AbiParserService {
     return res;
   }
 
+  static getContractName(contract: any): string {
+    if (!contract) { return ''; }
+    return contract.contractName || 'My_Contract';
+  }
+  static parseABIForElements(contract: any): { fList: AbiItem[]; eList: AbiItem[] } {
+    if (!contract) { return null; }
+    return AbiParserService.exctractElementByTypes(contract.abi);
+  }
+
   private static exctractElementByTypes(abi: any) {
     const fList = [];
     const eList = [];
@@ -68,15 +77,6 @@ export class AbiParserService {
       }
     });
     return { fList, eList };
-  }
-
-  static getContractName(contract: any): string {
-    if (!contract) { return ''; }
-    return contract.contractName;
-  }
-  static parseABIForElements(contract: any): { fList: AbiItem[]; eList: AbiItem[] } {
-    if (!contract) { return null; }
-    return AbiParserService.exctractElementByTypes(contract.abi);
   }
 
 }

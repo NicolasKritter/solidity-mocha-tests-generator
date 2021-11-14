@@ -13,11 +13,11 @@ export class TransactionDecoderService {
   constructor() {
     this.web3 = new Web3();
   }
-  //TODO acontract type
+  // TODO acontract type or abitItem []
   public loadAbi(abi: any): void {
     this.hashes = this.getFunctionHashes(abi);
   }
-  //TODO add getTransationDatafromHash
+  // TODO add getTransationDatafromHash
 
   public parseTxInputs(txData: Transaction): { functionCalled: any; parameters: any } {
     const functionCalled = this.findFunctionByHash(txData.input);
@@ -40,7 +40,6 @@ export class TransactionDecoderService {
   private getFunctionHashes(abi: AbiItem[]): { name: string; hash: string; inputs: AbiInput[]; outputs: AbiOutput[] }[] {
     const hashes = [];
     for (let i = 0; i < abi.length; i++) {
-      // eslint-disable-next-line security/detect-object-injection
       const item = abi[i];
       if (item.type === 'function') {
         const signature = `${item.name}(${item.inputs?.map((input) => input.type).join(',')})`;
@@ -56,7 +55,7 @@ export class TransactionDecoderService {
     return hashes;
   }
 
-  private parseBlockTransactionParameters(params: AbiInput[], txData: string): { [key: string]: unknown; } {
+  private parseBlockTransactionParameters(params: AbiInput[], txData: string): { [key: string]: unknown } {
     txData = txData.slice(10);
     txData = `0x${txData}`;
     return this.web3.eth.abi.decodeParameters(params, txData);
