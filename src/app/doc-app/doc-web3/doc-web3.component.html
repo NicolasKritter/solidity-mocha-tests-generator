@@ -55,7 +55,7 @@
   </mat-tab>
 
   <mat-tab label="Results" *ngIf="result">
-    <!-- fname(inputs) ==> outputs  (type + color) -->
+    <!-- fname(parsedInputs) ==> parsedOutputs  (type + color) -->
     <mat-accordion>
       <mat-expansion-panel *ngIf="result.fList">
         <mat-expansion-panel-header>
@@ -68,8 +68,8 @@
         </mat-expansion-panel-header>
         <mat-list>
           <mat-list-item *ngFor="let funct of result?.fList;let index = index; trackBy: trackByFn"
-            [ngClass]="{'fn-view': funct.stateMutability==='view','fn-pure':funct.stateMutability==='pure','cost-gaz':!funct.constant}">
-            {{funct.name}}{{funct.inputs}} ➠ {{funct.outputs}} ({{funct.stateMutability}})
+            [ngClass]="funct.style">
+            {{funct.name}}{{funct.parsedInputs}} ➠ {{funct.parsedOutputs}} ({{funct.stateMutability}})
           </mat-list-item>
         </mat-list>
       </mat-expansion-panel>
@@ -85,7 +85,7 @@
         </mat-expansion-panel-header>
         <mat-list>
           <mat-list-item *ngFor="let ev of result?.eList;let index = index;  trackBy: trackByFn">
-            {{ev.name}} ➠ {{ev.inputs}}
+            {{ev.name}} ➠ {{ev.parsedInputs}}
           </mat-list-item>
         </mat-list>
       </mat-expansion-panel>
@@ -95,10 +95,10 @@
       <mat-expansion-panel *ngFor="let funct of result?.fList;let index = index;  trackBy index" [ngClass]="{'gaz-free': funct.constant,'cost-gaz':!funct.constant}">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{funct.name}} {{funct.inputs}}
+            {{funct.name}} {{funct.parsedInputs}}
           </mat-panel-title>
           <mat-panel-description>
-            => {{funct.outputs}} {{funct.stateMutability}}
+            => {{funct.parsedOutputs}} {{funct.stateMutability}}
           </mat-panel-description>
         </mat-expansion-panel-header>
         <!-- Payable: {{funct.payable}} -->
@@ -113,7 +113,7 @@
             {{ev.name}}
           </mat-panel-title>
           <mat-panel-description>
-            => {{ev.inputs}}
+            => {{ev.parsedInputs}}
           </mat-panel-description>
         </mat-expansion-panel-header>
         Payable: {{funct.payable}}

@@ -60,12 +60,12 @@ export class AbiParserService {
     if (!contract) { return ''; }
     return contract.contractName || 'My_Contract';
   }
-  static parseABIForElements(contract: any): { fList: AbiItem[]; eList: AbiItem[] } {
-    if (!contract) { return null; }
-    return AbiParserService.exctractElementByTypes(contract.abi);
+  static parseABIForElements(abiList: AbiItem[]): { fList: AbiItem[]; eList: AbiItem[] } {
+    if (!abiList) { return null; }
+    return AbiParserService.exctractElementByTypes(abiList);
   }
 
-  private static exctractElementByTypes(abi: any) {
+  private static exctractElementByTypes(abi: AbiItem[]) {
     const fList = [];
     const eList = [];
     if (!abi) { return { fList, eList }; }

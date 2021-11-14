@@ -77,8 +77,6 @@ export class UnitTestWriterService {
   }
 
   static writeTestForFunction(func: AbiItem) {
-    console.log(func);
-
     const input = UnitTestWriterService.writeInputs(func.inputs);
     const output = UnitTestWriterService.writeOutputs(func.outputs);
     const res = `
@@ -127,9 +125,10 @@ export class UnitTestWriterService {
     });
     return s;
   }
-  //TODO! retunr type
+  // TODO! retunr type
+  // TODO! handle contract apsed type
   static writeTest(contract: any): string[] {
-    const sortedElements = AbiParserService.parseABIForElements(contract);
+    const sortedElements = AbiParserService.parseABIForElements(contract.abi);
     const contractName = AbiParserService.getContractName(contract);
     console.log('sorted', sortedElements);
     const eventList = UnitTestWriterService.writeEventsTest(sortedElements.eList);

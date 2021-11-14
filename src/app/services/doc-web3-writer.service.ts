@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AbiParserService } from './abi-parser.service';
 import { AbiItem, AbiInput, AbiOutput } from 'web3-utils';
+import { ParsedFunction } from 'app/config/types';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,6 @@ import { AbiItem, AbiInput, AbiOutput } from 'web3-utils';
 export class DocWeb3WriterService {
 
   constructor() { }
-  // TODO! type is contract
   static writeDoc(contract: any): { contractName: string; fList: AbiItem[]; eList: AbiItem[] } {
     const sortedElements = AbiParserService.parseABIForElements(contract);
     const contractName = AbiParserService.getContractName(contract);
@@ -23,13 +23,22 @@ export class DocWeb3WriterService {
     return AbiParserService.parseABIForElements(contract);
   }
 
-  static parseFunctions(functionList: AbiItem[]) {
-    const res = [];
-    functionList.forEach(element => {
-      const e: any = element;
-      e.outputs = DocWeb3WriterService.parseInOut(element.outputs);
-      e.inputs = DocWeb3WriterService.parseInOut(element.inputs);
-      res.push(e);
+  static parseFunctions(functionList: AbiItem[]): ParsedFunction[] {
+    const res = functionList.map((e: ParsedFunction) => {
+      e.parsedInputs = DocWeb3WriterService.parseInOut(e.outputs);
+      e.parsedOutputs = DocWeb3WriterService.parseInOut(e.inputs);
+      switch (e.stateMutability) {
+        case 'nonpayable':
+          e.style = 'cost-gaz';
+          break;
+        case 'view':
+          e.style = 'fn-view';
+          break;
+        case 'pure':
+          e.style = 'fn-pure';
+          break;
+      }
+      return e;
     });
     return res;
   }

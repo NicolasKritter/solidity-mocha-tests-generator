@@ -12,7 +12,7 @@ import { Transaction } from 'web3-core';
 export class TxDecoderComponent extends FileImportAbstractComponent implements OnInit {
   public txData: Transaction;
   // @typescript-eslint/no-explicit-any
-  public result: { functionCalled: any; parameters: any; };
+  public result: { functionCalled: any; parameters: any };
   public events: string;
   constructor(private txDecoder: TransactionDecoderService) {
     super();
@@ -28,6 +28,8 @@ export class TxDecoderComponent extends FileImportAbstractComponent implements O
   public decodeData() {
     this.result = this.txDecoder.parseTxInputs(this.txData);
   }
+
+  // TODO! use form builder and get rid of ngModel
 
   copyResultToClipBoard(): void {
     this.copyToClipboard(this.result);
