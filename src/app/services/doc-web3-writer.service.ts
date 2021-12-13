@@ -9,8 +9,8 @@ import { ParsedFunction } from 'app/config/types';
 export class DocWeb3WriterService {
 
   constructor() { }
-  static writeDoc(contract: any): { contractName: string; fList: AbiItem[]; eList: AbiItem[] } {
-    const sortedElements = AbiParserService.parseABIForElements(contract);
+  static writeDoc(contract: any): { contractName: string; fList: ParsedFunction[]; eList: ParsedFunction[] } {
+    const sortedElements = AbiParserService.parseABIForElements(contract.abi);
     const contractName = AbiParserService.getContractName(contract);
     console.log('sorted', sortedElements);
     return {

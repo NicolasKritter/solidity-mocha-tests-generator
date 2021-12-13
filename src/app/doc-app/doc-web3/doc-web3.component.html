@@ -56,8 +56,11 @@
 
   <mat-tab label="Results" *ngIf="result">
     <!-- fname(parsedInputs) ==> parsedOutputs  (type + color) -->
+    <mat-form-field class="w-100">
+      <input type="text" matInput [formControl]="searchCtrl" placeholder="Search" id="search-function">
+    </mat-form-field>
     <mat-accordion>
-      <mat-expansion-panel *ngIf="result.fList">
+      <mat-expansion-panel *ngIf="filteredOptions | async">
         <mat-expansion-panel-header>
           <mat-panel-title>
             Public & external functions
@@ -65,9 +68,10 @@
           <mat-panel-description>
             {{result.fList.length}} items
           </mat-panel-description>
+
         </mat-expansion-panel-header>
         <mat-list>
-          <mat-list-item *ngFor="let funct of result?.fList;let index = index; trackBy: trackByFn"
+          <mat-list-item *ngFor="let funct of (filteredOptions | async);let index = index; trackBy: trackByFn"
             [ngClass]="funct.style">
             {{funct.name}}{{funct.parsedInputs}} ➠ {{funct.parsedOutputs}} ({{funct.stateMutability}})
           </mat-list-item>
