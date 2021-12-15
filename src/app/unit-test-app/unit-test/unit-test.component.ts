@@ -5,7 +5,7 @@ import { UnitTestWriterService } from 'app/services/unit-test-writer.service';
 @Component({
   selector: 'app-unit-test',
   templateUrl: './unit-test.component.html',
-  styleUrls: ['./unit-test.component.css']
+  styles: ['']
 })
 export class UnitTestComponent extends FileImportAbstractComponent implements OnInit {
   result: string;

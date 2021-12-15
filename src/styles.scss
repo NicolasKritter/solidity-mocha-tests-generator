@@ -1,52 +1,158 @@
 /* You can add global styles to this file, and also import other style files */
 @import "src/theme/theme.scss";
 
-html, body { height: 100%; margin: 0; width:100%;}
-body { font-family: Roboto, "Helvetica Neue", sans-serif;}
-.mat-sidenav{min-width: 260px;width:200px;}
-.center_full{margin: auto;text-align: center;}
-.margin-center{margin: auto;}
-.mat-drawer-container{height:100%;}
-.angular-with-newlines {
+html,
+body {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-sidenav {
+  min-width: 260px;
+  width: 200px;
+}
+
+.center_full {
+  margin: auto;
+  text-align: center;
+}
+
+.margin-center {
+  margin: auto;
+}
+
+.mat-drawer-container {
+  height: 100%;
+}
+
+.pre-wrap {
   white-space: pre-wrap;
-  }
+}
+
 .headers-align .mat-expansion-panel-header-title,
 .headers-align .mat-expansion-panel-header-description {
   flex-basis: 0;
 }
-.m-15{margin: 15px;}
-.float-right{float: right;}
-.flex-line{display: flex;flex-wrap: wrap;}
-.sparse{justify-content:space-between;}
-.element{flex-grow: 1}
+
+.m-15 {
+  margin: 15px;
+}
+
+.float-right {
+  float: right;
+}
+
+.flex-line {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sparse {
+  justify-content: space-between;
+}
+
+.element {
+  flex-grow: 1
+}
+
 .headers-align .mat-expansion-panel-header-description {
   align-items: center;
   justify-content: space-between;
 }
-.header-main{padding: 100px;}
-h1{font-size: 2.5em;}
-.fill-remaining-space{ flex: 1 1 auto;}
-.width-50{width: 50%;}
-.width-100{width: 100%;}
-.element-x-2{flex-grow: 2}
-.element_3-4{width: 75%;}
-.element_1-3{width: 33%;}
-.margin-h-15{margin: 0 15px;}
-.padding-15{padding: 15px;}
-.flex-block{display: flex;}
-.flex-block_column{
+
+.header-main {
+  padding: 100px;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.element-x-2 {
+  flex-grow: 2
+}
+
+.element_3-4 {
+  width: 75%;
+}
+
+.element_1-3 {
+  width: 33%;
+}
+
+.margin-h-15 {
+  margin: 0 15px;
+}
+
+.padding-15 {
+  padding: 15px;
+}
+
+.flex-block {
+  display: flex;
+}
+
+.flex-block_column {
   flex-direction: column;
 }
+
 p {
   white-space: pre;
 }
-.keep-lines{white-space:pre-wrap;}
-.page-root{display: flex;flex-flow: column;height: 100%;}
-.bg-white{ background: white;}
-.h100{height: 100%;}
-.code-font{font-family: monospace;}
-.fn-view{background-color:#4caf50}
-.fn-pure{background-color: #00bcd4}
-.cost-gaz{background-color:#ec407a}
-.payable{background-color: papayawhip}
+
+.keep-lines {
+  white-space: pre-wrap;
+}
+
+.page-root {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.bg-white {
+  background: white;
+}
+
+.h100 {
+  height: 100%;
+}
+
+.code-font {
+  font-family: monospace;
+}
+
+.fn-view {
+  background-color: #4caf50
+}
+
+.fn-pure {
+  background-color: #00bcd4
+}
+
+.cost-gaz {
+  background-color: #ec407a
+}
+
+.payable {
+  background-color: papayawhip
+}
+
 /* .mat-sidenav-content{background: lightgrey;} */
