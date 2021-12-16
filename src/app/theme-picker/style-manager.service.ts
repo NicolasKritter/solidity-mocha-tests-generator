@@ -1,15 +1,73 @@
 import { Injectable } from '@angular/core';
 
+export default class ThemeData {
+  primary: string;
+  accent: string;
+  displayName: string;
+  name: string;
+  isDark: boolean;
+  isDefault?: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class StyleManagerService {
 
-  private static coreTheme = ['candy-app-theme', 'unicorn-dark-theme', 'indigo-pink'];
+  private coreTheme = ['candy-app-theme', 'unicorn-dark-theme', 'indigo-pink'];
+  private themes: ThemeData[] = [
+    {
+      primary: '#673AB7',
+      accent: '#FFC107',
+      displayName: 'Deep Purple & Amber',
+      name: 'deeppurple-amber',
+      isDark: false
+    },
+    {
+      primary: '#3F51B5',
+      accent: '#E91E63',
+      displayName: 'Indigo & Pink',
+      name: 'indigo-pink',
+      isDark: false,
+      isDefault: true
+    },
+    {
+      primary: '#E91E63',
+      accent: '#607D8B',
+      displayName: 'Pink & Blue-grey',
+      name: 'pink-bluegrey',
+      isDark: true
+    },
+    {
+      primary: '#9C27B0',
+      accent: '#4CAF50',
+      displayName: 'Purple & Green',
+      name: 'purple-green',
+      isDark: true
+    },
+    {
+      primary: '#607d8b',
+      accent: '#ffd740',
+      displayName: 'Unicord dark',
+      name: 'unicorn-dark-theme',
+      isDark: true
+    },
+    {
+      primary: '#ffc0cb',
+      accent: '#e040fb',
+      displayName: 'Candy App',
+      name: 'candy-app-theme',
+      isDark: true
+    }
+  ];
   constructor() { }
 
+  public getThemeList(): ThemeData[] {
+    return this.themes;
+  }
+
   setTheme(themeToSet: string): void {
-    if (StyleManagerService.coreTheme.includes(themeToSet)) {
+    if (this.coreTheme.includes(themeToSet)) {
       this.setCoreTheme(themeToSet);
     } else {
       this.setStyle('theme', `assets/styles/${themeToSet}.css`);

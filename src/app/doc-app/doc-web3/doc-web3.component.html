@@ -10,17 +10,15 @@
       <div class="element flex-block flex-block_column margin-h-15">
         <h4>Import contract.json from computer</h4>
         <div class="element">
-          <div class="element">
-            <input type='file' (change)="onFileChanged($event)" #fileInput style='display: none;'>
-            <mat-form-field class="element">
-              <input readonly matInput type='text' [(ngModel)]="fileName" />
-            </mat-form-field>
-            <!-- <button [disabled]="!file" mat-flat-button color="primary" (click)="parseFileToContractJson()">Parse
+          <input type='file' (change)="onFileChanged($event)" #fileInput style='display: none;'>
+          <mat-form-field class="element">
+            <input readonly matInput type='text' [(ngModel)]="fileName" />
+          </mat-form-field>
+          <!-- <button [disabled]="!file" mat-flat-button color="primary" (click)="parseFileToContractJson()">Parse
               File</button> -->
-            <button mat-flat-button color="accent" class="margin-h-15" (click)="selectFile()">Select File</button>
-          </div>
-          <!-- <button mat-flat-button color="accent" class="margin-h-15" (click)="selectFile()">Select File</button> -->
+          <button mat-flat-button color="accent" class="margin-h-15" (click)="selectFile()">Select File</button>
         </div>
+        <!-- <button mat-flat-button color="accent" class="margin-h-15" (click)="selectFile()">Select File</button> -->
 
         <div class="element">
           <h4>Import contract.json from URL</h4>

@@ -1,9 +1,13 @@
-import { CommonModule } from "@angular/common";
-import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { MaterialModule } from "app/shared/material/material.module";
-import { UnitTestRoutingModule } from "./unit-test-app-routing.module";
-import { UnitTestComponent } from "./unit-test/unit-test.component";
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { UnitTestRoutingModule } from './unit-test-app-routing.module';
+import { UnitTestComponent } from './unit-test/unit-test.component';
 
 
 
@@ -12,7 +16,11 @@ import { UnitTestComponent } from "./unit-test/unit-test.component";
   imports: [
     CommonModule,
     UnitTestRoutingModule,
-    MaterialModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
     FormsModule
   ]
 })
