@@ -9,7 +9,7 @@ import ThemeData, { StyleManagerService } from '../style-manager.service';
 })
 export class ThemePickerComponent implements OnInit {
   public themes: ThemeData[];
-  private currentTheme: ThemeData;
+  // private currentTheme: ThemeData;
 
   constructor(private styleManagerService: StyleManagerService) {
     this.themes = this.styleManagerService.getThemeList();
@@ -30,7 +30,7 @@ export class ThemePickerComponent implements OnInit {
       return;
     }
 
-    this.currentTheme = theme;
+    // this.currentTheme = theme;
     localStorage.setItem('theme', themeName);
     if (theme.isDefault) {
       this.styleManagerService.removeStyle('theme');

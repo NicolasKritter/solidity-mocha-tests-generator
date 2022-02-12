@@ -42,7 +42,6 @@ export class DocWeb3Component extends FileImportAbstractComponent implements OnI
     const parsedContract = JSON.parse(this.abiInput);
     // this.unitTestWriterService.test(parsedContract);
     this.result = DocWeb3WriterService.writeDoc(parsedContract);
-    console.log(this.result);
   }
 
   // public filterBy(array: any[], prop: string): any[] {

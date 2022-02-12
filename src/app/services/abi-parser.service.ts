@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ParsedOut } from 'app/class/parsed-out';
 import { ASSERT_BY_TYPE } from 'app/config/types';
-import { AbiItem, AbiInput, AbiOutput } from 'web3-utils';
+import { AbiInput, AbiItem, AbiOutput } from 'web3-utils';
 
 const TYPE_FUNCTION = 'function';
 const TYPE_EVENT = 'event';
@@ -76,6 +76,8 @@ export class AbiParserService {
         fList.push(element);
       } else if (element.type === TYPE_EVENT) {
         eList.push(element);
+        console.log(element);
+
       }
     });
     return { fList, eList };
