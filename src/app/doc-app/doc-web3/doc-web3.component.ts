@@ -15,7 +15,9 @@ import { debounceTime, map, Observable, startWith, Subject, takeUntil } from 'rx
 export class DocWeb3Component extends FileImportAbstractComponent implements OnInit, OnDestroy {
   public result: { fList: ParsedFunction[]; eList: ParsedFunction[] };
   public filteredOptions: Observable<ParsedFunction[]>;
+  public filteredEvents: Observable<ParsedFunction[]>;
   public searchCtrl = new FormControl();
+  public searchEvent = new FormControl();
 
   private destroy$ = new Subject();
 
@@ -27,9 +29,16 @@ export class DocWeb3Component extends FileImportAbstractComponent implements OnI
     this.filteredOptions = this.searchCtrl.valueChanges
       .pipe(
         startWith(''),
-        debounceTime(300),
+        debounceTime(400),
         takeUntil(this.destroy$),
-        map((value: string) => value ? this.filter(value) : this.result.fList)
+        map((value: string) => this.filter(value, this.result.fList))
+      );
+    this.filteredEvents = this.searchEvent.valueChanges
+      .pipe(
+        startWith(''),
+        debounceTime(400),
+        takeUntil(this.destroy$),
+        map((value: string) => this.filter(value, this.result.eList))
       );
   }
 
@@ -37,7 +46,8 @@ export class DocWeb3Component extends FileImportAbstractComponent implements OnI
     this.destroy$.next(true);
   }
 
-  public writeDoc(): void {
+  public writeDoc(abiInput: string): void {
+    this.abiInput = abiInput;
     if (!this.abiInput) { return; }
     const parsedContract = JSON.parse(this.abiInput);
     // this.unitTestWriterService.test(parsedContract);
@@ -52,7 +62,8 @@ export class DocWeb3Component extends FileImportAbstractComponent implements OnI
     return index;
   }
 
-  private filter(search: string): ParsedFunction[] {
-    return this.result.fList.filter((e) => e.name.includes(search));
+  private filter(search: string, list: ParsedFunction[]): ParsedFunction[] {
+    if (!search) { return list; }
+    return list.filter((e) => e.name.includes(search));
   }
 }

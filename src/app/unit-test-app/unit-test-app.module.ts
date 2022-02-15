@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { AbiImporterModule } from 'app/components/abi-importer/abi-importer.module';
 import { UnitTestRoutingModule } from './unit-test-app-routing.module';
 import { UnitTestComponent } from './unit-test/unit-test.component';
 
@@ -23,7 +24,8 @@ import { UnitTestComponent } from './unit-test/unit-test.component';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    AbiImporterModule
   ]
 })
 export class UnitTestAppModule { }

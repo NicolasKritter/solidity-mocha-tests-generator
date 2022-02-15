@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { AbiImporterModule } from 'app/components/abi-importer/abi-importer.module';
 import { TxDecodeAppRoutingModule } from './tx-decode-app-routing.module';
 import { TxDecoderComponent } from './tx-decoder/tx-decoder.component';
 
@@ -24,6 +25,7 @@ import { TxDecoderComponent } from './tx-decoder/tx-decoder.component';
     ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
+    AbiImporterModule,
     TxDecodeAppRoutingModule
   ]
 })

@@ -21,11 +21,12 @@ export class TxDecoderComponent extends FileImportAbstractComponent implements O
   override ngOnInit() {
   }
 
-  public loadAbi() {
+  public loadAbi(abiInput: string): void {
+    this.abiInput = abiInput;
     this.txDecoder.loadAbi(this.abiInput);
   }
 
-  public decodeData() {
+  public decodeData(): void {
     this.result = this.txDecoder.parseTxInputs(this.txData);
   }
 

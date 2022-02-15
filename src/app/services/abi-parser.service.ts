@@ -76,8 +76,6 @@ export class AbiParserService {
         fList.push(element);
       } else if (element.type === TYPE_EVENT) {
         eList.push(element);
-        console.log(element);
-
       }
     });
     return { fList, eList };

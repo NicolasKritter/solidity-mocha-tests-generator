@@ -8,8 +8,8 @@ import { UnitTestWriterService } from 'app/services/unit-test-writer.service';
   styles: ['']
 })
 export class UnitTestComponent extends FileImportAbstractComponent implements OnInit {
-  result: string;
-  events: string;
+  public result: string;
+  public events: string;
 
   constructor() {
     super();
@@ -18,7 +18,8 @@ export class UnitTestComponent extends FileImportAbstractComponent implements On
   override ngOnInit() {
   }
 
-  public writeTest(): void {
+  public writeTest(abiInput: string): void {
+    this.abiInput = abiInput;
     if (!this.abiInput) { return; }
     const parsedContract = JSON.parse(this.abiInput);
     // this.unitTestWriterService.test(parsedContract);
