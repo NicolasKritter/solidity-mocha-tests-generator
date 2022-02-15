@@ -18,7 +18,7 @@ export class AbiImporterComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.abiInput = AbiImporterComponent.abiString;
+    this.abiInput = AbiImporterComponent.abiString || localStorage.getItem('abi');
   }
 
   public selectFile(): void {
@@ -28,6 +28,7 @@ export class AbiImporterComponent implements OnInit {
   public start(): void {
     if (this.abiInput) {
       AbiImporterComponent.abiString = this.abiInput;
+      localStorage.setItem('abi', this.abiInput);
       this.onContractLoaded.emit(this.abiInput);
     }
   }
