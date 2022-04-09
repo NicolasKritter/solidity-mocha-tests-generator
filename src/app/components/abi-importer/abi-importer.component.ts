@@ -15,6 +15,7 @@ export class AbiImporterComponent implements OnInit {
   public urlContractJson: string;
   public file: File;
   public fileName: string;
+  // TODO! import from indexed DB & add page abi manager
   constructor() { }
 
   ngOnInit() {
