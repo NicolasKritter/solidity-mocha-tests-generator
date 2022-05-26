@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import Web3 from 'web3';
 import { Transaction } from 'web3-core';
-import { AbiItem, AbiInput, AbiOutput } from 'web3-utils';
+import { AbiInput, AbiItem, AbiOutput } from 'web3-utils';
 
 
 @Injectable({
@@ -14,14 +14,18 @@ export class TransactionDecoderService {
     this.web3 = new Web3();
   }
   // TODO acontract type or abitItem []
-  public loadAbi(abi: any): void {
+  public loadAbi(abi: AbiItem[]): void {
     this.hashes = this.getFunctionHashes(abi);
   }
   // TODO add getTransationDatafromHash
 
-  public parseTxInputs(txData: Transaction): { functionCalled: any; parameters: any } {
+  public parseTxInputs(txData: Transaction): {
+    functionCalled: { name: string; hash: string; inputs: AbiInput[]; outputs: AbiOutput[] };
+    parameters: { [key: string]: unknown };
+  } {
     const functionCalled = this.findFunctionByHash(txData.input);
     const parameters = this.parseBlockTransactionParameters(functionCalled.inputs, txData.input);
+    // TODO return parsed function as text as well
     return {
       functionCalled,
       parameters
@@ -29,8 +33,9 @@ export class TransactionDecoderService {
   }
 
   public findFunctionByHash(functionHash: string): { name: string; hash: string; inputs: AbiInput[]; outputs: AbiOutput[] } | null {
+    const hash = functionHash.substring(0, 10);
     for (let i = 0; i < this.hashes.length; i++) {
-      if (this.hashes[i].hash.substring(0, 10) === functionHash.substring(0, 10)) {
+      if (this.hashes[i].hash.substring(0, 10) === hash) {
         return this.hashes[i];
       }
     }

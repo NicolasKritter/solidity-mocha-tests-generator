@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-abi-importer',
@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, OnInit, O
 export class AbiImporterComponent implements OnInit {
   public static abiString: string;
 
-  @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
+  // @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   @Output() onContractLoaded = new EventEmitter<any>();
 
   public abiInput: string;
@@ -20,11 +20,12 @@ export class AbiImporterComponent implements OnInit {
 
   ngOnInit() {
     this.abiInput = AbiImporterComponent.abiString || localStorage.getItem('abi');
+    this.start();
   }
 
-  public selectFile(): void {
-    this.fileInput.nativeElement.click();
-  }
+  // public selectFile(): void {
+  //   this.fileInput.nativeElement.click();
+  // }
 
   public start(): void {
     if (this.abiInput) {

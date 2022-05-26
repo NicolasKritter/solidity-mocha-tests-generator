@@ -17,12 +17,8 @@
         <mat-form-field>
           <textarea rows="15" matInput placeholder="paste Tx Data here" [(ngModel)]="txData" required></textarea>
         </mat-form-field>
-        <div class="element">
-          <button mat-flat-button color="accent" (click)="decodeData()">Decode data</button>
-        </div>
-
+        <button mat-flat-button color="accent" (click)="decodeData()">Decode data</button>
       </div>
-
     </div>
   </mat-tab>
 
@@ -30,19 +26,15 @@
     <div class="flex-line margin-h-15 fill-remaining-space">
       <div class=" element">
         <mat-form-field class="element width-100">
-          <textarea rows="25" matInput class="keep-lines code-font" placeholder="Mocha test file">{{result}}</textarea>
+          <textarea rows="25" matInput class="keep-lines code-font"
+            placeholder="Mocha test file">{{result | json}}</textarea>
         </mat-form-field>
         <button mat-flat-button color="primary" (click)="copyResultToClipBoard()">Copy to ClipBoard</button>
       </div>
-    </div>
-  </mat-tab>
-  <mat-tab label="Result - Events" *ngIf="result">
-    <div class="flex-line margin-h-15 fill-remaining-space">
-      <div class="keep-lines element">
-        <mat-form-field class="element width-100">
-          <textarea rows="25" matInput class="keep-lines code-font" placeholder="Events test code">{{events}}</textarea>
-        </mat-form-field>
-        <button mat-flat-button color="primary" (click)="copyEventToClipBoard()">Copy to ClipBoard</button>
+      <div class=" element">
+        <h4>Function</h4>
+        <p>{{result.functionCalled.name}}</p>
+        <p>hash: {{result.functionCalled.hash}}</p>
       </div>
     </div>
   </mat-tab>

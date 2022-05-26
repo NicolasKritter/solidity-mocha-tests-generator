@@ -13,7 +13,6 @@ export class TxDecoderComponent extends FileImportAbstractComponent implements O
   public txData: Transaction;
   // @typescript-eslint/no-explicit-any
   public result: { functionCalled: any; parameters: any };
-  public events: string;
   constructor(private txDecoder: TransactionDecoderService) {
     super();
   }
@@ -23,19 +22,18 @@ export class TxDecoderComponent extends FileImportAbstractComponent implements O
 
   public loadAbi(abiInput: string): void {
     this.abiInput = abiInput;
-    this.txDecoder.loadAbi(this.abiInput);
+    this.txDecoder.loadAbi(JSON.parse(this.abiInput));
   }
 
   public decodeData(): void {
-    this.result = this.txDecoder.parseTxInputs(this.txData);
+    const txData = { input: this.txData };
+    this.result = this.txDecoder.parseTxInputs(txData as unknown as Transaction);
+    // TODO res presentation
   }
 
   // TODO! use form builder and get rid of ngModel
 
   copyResultToClipBoard(): void {
     this.copyToClipboard(this.result);
-  }
-  copyEventToClipBoard(): void {
-    this.copyToClipboard(this.events);
   }
 }

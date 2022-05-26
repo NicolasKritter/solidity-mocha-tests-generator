@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ParsedOut } from 'app/class/parsed-out';
+import { AbiInput, AbiItem, AbiOutput } from 'web3-utils';
 import { AbiParserService } from './abi-parser.service';
-import { AbiItem, AbiInput, AbiOutput } from 'web3-utils';
+import { formatContract } from './utils';
 
 // TODO! check AbiInput for ContractInsOuts
 @Injectable({
@@ -125,9 +126,9 @@ export class UnitTestWriterService {
     });
     return s;
   }
-  // TODO! retunr type
-  // TODO! handle contract apsed type
-  static writeTest(contract: any): string[] {
+  // TODO! handle abi path
+  static writeTest(contractData: any): string[] {
+    const contract = formatContract(contractData);
     const sortedElements = AbiParserService.parseABIForElements(contract.abi);
     const contractName = AbiParserService.getContractName(contract);
     console.log('sorted', sortedElements);

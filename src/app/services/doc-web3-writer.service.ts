@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ParsedFunction } from 'app/config/types';
 import { AbiInput, AbiItem, AbiOutput } from 'web3-utils';
 import { AbiParserService } from './abi-parser.service';
+import { formatContract } from './utils';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,9 @@ import { AbiParserService } from './abi-parser.service';
 export class DocWeb3WriterService {
 
   constructor() { }
-  static writeDoc(contract: any): { contractName: string; fList: ParsedFunction[]; eList: ParsedFunction[] } {
+  static writeDoc(contractData: any): { contractName: string; fList: ParsedFunction[]; eList: ParsedFunction[] } {
+    const contract = formatContract(contractData);
+
     const sortedElements = AbiParserService.parseABIForElements(contract.abi);
     const contractName = AbiParserService.getContractName(contract);
     return {
