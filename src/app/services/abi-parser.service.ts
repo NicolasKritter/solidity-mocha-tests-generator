@@ -5,7 +5,6 @@ import { AbiInput, AbiItem, AbiOutput } from 'web3-utils';
 
 const TYPE_FUNCTION = 'function';
 const TYPE_EVENT = 'event';
-// TODO!! Keep parsed ABI in memory (share among app)
 @Injectable({
   providedIn: 'root'
 })
@@ -66,7 +65,7 @@ export class AbiParserService {
     return AbiParserService.exctractElementByTypes(abiList);
   }
 
-  private static exctractElementByTypes(abi: AbiItem[]) {
+  private static exctractElementByTypes(abi: AbiItem[]): { fList: AbiItem[]; eList: AbiItem[] } {
 
     const fList = [];
     const eList = [];

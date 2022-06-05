@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AbiStorageService } from 'app/services/abi-storage.service';
 
 @Component({
   selector: 'app-abi-importer',
@@ -16,16 +17,22 @@ export class AbiImporterComponent implements OnInit {
   public file: File;
   public fileName: string;
   // TODO! import from indexed DB & add page abi manager
-  constructor() { }
+  constructor(private abiStorageService: AbiStorageService) { }
 
   ngOnInit() {
     this.abiInput = AbiImporterComponent.abiString || localStorage.getItem('abi');
     this.start();
+    this.abiStorageService.getAbiList();
   }
 
   // public selectFile(): void {
   //   this.fileInput.nativeElement.click();
   // }
+  public save(): void {
+    if (this.abiInput) {
+      this.abiStorageService.upsertContract(this.abiInput, 'testID2');
+    }
+  }
 
   public start(): void {
     if (this.abiInput) {

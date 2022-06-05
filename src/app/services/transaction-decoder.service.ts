@@ -13,7 +13,6 @@ export class TransactionDecoderService {
   constructor() {
     this.web3 = new Web3();
   }
-  // TODO acontract type or abitItem []
   public loadAbi(abi: AbiItem[]): void {
     this.hashes = this.getFunctionHashes(abi);
   }

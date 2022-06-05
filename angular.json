@@ -126,6 +126,5 @@
         }
       }
     }
-  },
-  "defaultProject": "solidity-mocha-tests-generator"
+  }
 }

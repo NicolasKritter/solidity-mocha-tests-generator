@@ -14,16 +14,17 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^13.3.10",
-    "@angular/cdk": "^13.3.8",
-    "@angular/common": "^13.3.10",
-    "@angular/compiler": "^13.3.10",
-    "@angular/core": "^13.3.10",
-    "@angular/forms": "^13.3.10",
-    "@angular/material": "^13.3.8",
-    "@angular/platform-browser": "^13.3.10",
-    "@angular/platform-browser-dynamic": "^13.3.10",
-    "@angular/router": "^13.3.10",
+    "@angular/animations": "^14.0.0",
+    "@angular/cdk": "^14.0.0",
+    "@angular/common": "^14.0.0",
+    "@angular/compiler": "^14.0.0",
+    "@angular/core": "^14.0.0",
+    "@angular/forms": "^14.0.0",
+    "@angular/material": "^14.0.0",
+    "@angular/platform-browser": "^14.0.0",
+    "@angular/platform-browser-dynamic": "^14.0.0",
+    "@angular/router": "^14.0.0",
+    "apollo-angular": "^3.0.1",
     "assert": "^2.0.0",
     "core-js": "^3.22.7",
     "crypto-browserify": "^3.12.0",
@@ -34,13 +35,15 @@
     "stream-http": "^3.2.0",
     "tslib": "^2.4.0",
     "web3": "^1.7.3",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "@apollo/client": "^3.0.0",
+    "graphql": "^16"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~13.3.7",
-    "@angular/cli": "^13.3.7",
-    "@angular/compiler-cli": "^13.3.10",
-    "@angular/language-service": "^13.3.10",
+    "@angular-devkit/build-angular": "^14.0.0",
+    "@angular/cli": "^14.0.0",
+    "@angular/compiler-cli": "^14.0.0",
+    "@angular/language-service": "^14.0.0",
     "@types/jasmine": "^4.0.3",
     "@types/node": "^17.0.35",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
@@ -56,6 +59,6 @@
     "karma-jasmine": "^5.0.1",
     "karma-jasmine-html-reporter": "^2.0.0",
     "protractor": "~7.0.0",
-    "typescript": "~4.4.4"
+    "typescript": "~4.7.3"
   }
 }

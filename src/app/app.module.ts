@@ -11,6 +11,8 @@ import { AppRoutingModule } from 'app/app-routing.module';
 import { AppComponent } from 'app/app.component';
 import { HomeComponent } from 'app/home/home.component';
 import { ThemePickerModule } from 'app/theme-picker/theme-picker.module';
+import { GraphQLModule } from './graphql.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -31,7 +33,9 @@ import { ThemePickerModule } from 'app/theme-picker/theme-picker.module';
     MatListModule,
     MatIconModule,
     MatToolbarModule,
-    ThemePickerModule
+    ThemePickerModule,
+    GraphQLModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
