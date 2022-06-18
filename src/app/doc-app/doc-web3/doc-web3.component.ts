@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { ParsedFunction } from 'app/config/types';
 import { FileImportAbstractComponent } from 'app/models/file-import.abstract';
 import { DocWeb3WriterService } from 'app/services/doc-web3-writer.service';
@@ -16,8 +16,8 @@ export class DocWeb3Component extends FileImportAbstractComponent implements OnI
   public result: { fList: ParsedFunction[]; eList: ParsedFunction[] };
   public filteredOptions: Observable<ParsedFunction[]>;
   public filteredEvents: Observable<ParsedFunction[]>;
-  public searchCtrl = new UntypedFormControl();
-  public searchEvent = new UntypedFormControl();
+  public searchCtrl = new FormControl<string>('');
+  public searchEvent = new FormControl<string>('');
 
   private destroy$ = new Subject();
 
